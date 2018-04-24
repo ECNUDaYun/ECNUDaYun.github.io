@@ -164,28 +164,10 @@
 </ol>
 <h5 id="exist结构用法："><a href="#exist结构用法：" class="headerlink" title="exist结构用法："></a>exist结构用法：</h5><p>后面非空的时候返回true</p>
 <h5 id="unique结构："><a href="#unique结构：" class="headerlink" title="unique结构："></a>unique结构：</h5><p>不常用，查询结果没有重复的元组返回true</p>
-<h5 id="with子句："><a href="#with子句：" class="headerlink" title="with子句："></a>with子句：</h5><p>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">with max_budget(value) as </span><br><span class="line"></span><br><span class="line">(select max(budget)</span><br><span class="line"></span><br><span class="line">from department)</span><br><span class="line"></span><br><span class="line">select budget</span><br><span class="line"></span><br><span class="line">from department,max_budget</span><br><span class="line"></span><br><span class="line">where department.budget = max_budget.value;</span><br></pre></td></tr></table></figure></p>
-<h5 id="delete语句："><a href="#delete语句：" class="headerlink" title="delete语句："></a>delete语句：</h5><p>delete from r               r是表名</p>
-<p>where P;                       P是对应的语句</p>
-<h5 id="insert语句："><a href="#insert语句：" class="headerlink" title="insert语句："></a>insert语句：</h5><p>基本写法</p>
-<p>insert into 表名【（可以选择具体的插入）】</p>
-<p>​    values（，，，，，）</p>
-<p>其他写法</p>
-<p>insert into 表名</p>
-<p>​    select查询语句</p>
-<h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><p>基本写法：</p>
-<p>update 表名</p>
-<p>set 语句</p>
-<p>其他写法：</p>
-<p>update 表名</p>
-<p>set 属性名 = </p>
-<p>case</p>
-<p>​    when p then r</p>
-<p>​    when p1 then r1</p>
-<p>​    …..</p>
-<p>​    else rn</p>
-<p>end</p>
-
+<h5 id="with子句："><a href="#with子句：" class="headerlink" title="with子句："></a>with子句：</h5>
+        
+          <a class="article-more-a" href="/数据库第三章复习/#more">more >></a>
+        
       
 
       
@@ -594,11 +576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
               </li>
              
               <li class="article-tag-list-item">
