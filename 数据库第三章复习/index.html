@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/4 | YUNBLOG</title>
+  <title>数据库第三章复习 | YUNBLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="YUNBLOG">
-<meta property="og:url" content="http://yoursite.com/archives/2018/04/index.html">
+  <meta name="description" content="第三章  sql 对于自己不熟悉的部分的复习聚集函数 avg，min，max，sum，count count函数是可以使用count（distinct 属性名）的 任何出现在group by中的属性，如果出现在select语句中，只能出现在聚集函数中（主要是数量上要相等，在mysql中实测不一定） having子句在分组之后作用，因此可以在having中使用聚集函数 除了count（*），其他的聚">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库第三章复习">
+<meta property="og:url" content="http://yoursite.com/数据库第三章复习/index.html">
 <meta property="og:site_name" content="YUNBLOG">
+<meta property="og:description" content="第三章  sql 对于自己不熟悉的部分的复习聚集函数 avg，min，max，sum，count count函数是可以使用count（distinct 属性名）的 任何出现在group by中的属性，如果出现在select语句中，只能出现在聚集函数中（主要是数量上要相等，在mysql中实测不一定） having子句在分组之后作用，因此可以在having中使用聚集函数 除了count（*），其他的聚">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-24T13:44:27.762Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="YUNBLOG">
+<meta name="twitter:title" content="数据库第三章复习">
+<meta name="twitter:description" content="第三章  sql 对于自己不熟悉的部分的复习聚集函数 avg，min，max，sum，count count函数是可以使用count（distinct 属性名）的 任何出现在group by中的属性，如果出现在select语句中，只能出现在聚集函数中（主要是数量上要相等，在mysql中实测不一定） having子句在分组之后作用，因此可以在having中使用聚集函数 除了count（*），其他的聚">
   
     <link rel="alternative" href="/atom.xml" title="YUNBLOG" type="application/atom+xml">
   
@@ -134,36 +139,89 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-数据库第三章复习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/数据库第三章复习/" class="archive-article-date">
-  	<time datetime="2018-04-24T12:49:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/数据库第三章复习/">数据库第三章复习</a>
+    <h1 class="article-title" itemprop="name">
+      数据库第三章复习
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/数据库第三章复习/" class="archive-article-date">
+  	<time datetime="2018-04-24T12:49:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="第三章-sql-对于自己不熟悉的部分的复习"><a href="#第三章-sql-对于自己不熟悉的部分的复习" class="headerlink" title="第三章  sql 对于自己不熟悉的部分的复习"></a>第三章  sql 对于自己不熟悉的部分的复习</h4><h5 id="聚集函数-avg，min，max，sum，count"><a href="#聚集函数-avg，min，max，sum，count" class="headerlink" title="聚集函数 avg，min，max，sum，count"></a>聚集函数 avg，min，max，sum，count</h5><ol>
+<li>count函数是可以使用count（distinct 属性名）的</li>
+<li>任何出现在group by中的属性，如果出现在select语句中，只能出现在聚集函数中（主要是数量上要相等，在mysql中实测不一定）</li>
+<li>having子句在分组之后作用，因此可以在having中使用聚集函数</li>
+<li>除了count（*），其他的聚集函数都是忽略null值的</li>
+</ol>
+<h5 id="exist结构用法："><a href="#exist结构用法：" class="headerlink" title="exist结构用法："></a>exist结构用法：</h5><p>后面非空的时候返回true</p>
+<h5 id="unique结构："><a href="#unique结构：" class="headerlink" title="unique结构："></a>unique结构：</h5><p>不常用，查询结果没有重复的元组返回true</p>
+<h5 id="with子句："><a href="#with子句：" class="headerlink" title="with子句："></a>with子句：</h5><p>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">with max_budget(value) as </span><br><span class="line"></span><br><span class="line">(select max(budget)</span><br><span class="line"></span><br><span class="line">from department)</span><br><span class="line"></span><br><span class="line">select budget</span><br><span class="line"></span><br><span class="line">from department,max_budget</span><br><span class="line"></span><br><span class="line">where department.budget = max_budget.value;</span><br></pre></td></tr></table></figure></p>
+<h5 id="delete语句："><a href="#delete语句：" class="headerlink" title="delete语句："></a>delete语句：</h5><p>delete from r               r是表名</p>
+<p>where P;                       P是对应的语句</p>
+<h5 id="insert语句："><a href="#insert语句：" class="headerlink" title="insert语句："></a>insert语句：</h5><p>基本写法</p>
+<p>insert into 表名【（可以选择具体的插入）】</p>
+<p>​    values（，，，，，）</p>
+<p>其他写法</p>
+<p>insert into 表名</p>
+<p>​    select查询语句</p>
+<h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><p>基本写法：</p>
+<p>update 表名</p>
+<p>set 语句</p>
+<p>其他写法：</p>
+<p>update 表名</p>
+<p>set 属性名 = </p>
+<p>case</p>
+<p>​    when p then r</p>
+<p>​    when p1 then r1</p>
+<p>​    …..</p>
+<p>​    else rn</p>
+<p>end</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/anypay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -175,160 +233,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/数据库第三章复习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hexo插入图片/" class="archive-article-date">
-  	<time datetime="2018-04-24T01:21:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/hexo插入图片/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo插入图片</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hexo插入图片/">hexo插入图片</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/jdbc插入数据/" class="archive-article-date">
-  	<time datetime="2018-04-23T15:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/jdbc插入数据/">servlet通过jdbc访问数据库</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">selvlet</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/servlet通过jdbc连接数据库/" class="archive-article-date">
-  	<time datetime="2018-04-22T12:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/servlet通过jdbc连接数据库/">servlet通过jdbc访问数据库</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">selvlet</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/Blog建设/" class="archive-article-date">
-  	<time datetime="2018-04-22T12:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Blog建设/">blog建设</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -351,8 +355,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
