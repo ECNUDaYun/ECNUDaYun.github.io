@@ -311,19 +311,25 @@
   
 
   
-  <div id="SOHUCS" sid="servlet通过jdbc连接数据库" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "true",
-        conf: "true"
-    });
-</script>
-</script>
-  
 
   
 
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/servlet通过jdbc连接数据库/",
+  owner: 'ECNUDaYun',
+  repo: 'https://github.com/settings/applications/712470',
+  oauth: {
+    client_id: '83ef681564fda66bc221',
+    client_secret: '9a275713f7b21db5d3e63809d22f74b9db86692a',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
