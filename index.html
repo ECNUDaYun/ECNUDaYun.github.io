@@ -231,19 +231,10 @@
       
         <h4 id="中级sql"><a href="#中级sql" class="headerlink" title="中级sql"></a>中级sql</h4><h5 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h5><p>第一种方式<code>A join B using（P1，P2...）</code>要求A，B都要有相同的属性名P1,P2…..</p>
 <p>第二种方式<code>A join B on P</code>P和where语句的差不多的写法</p>
-<p>这两种都是外连接</p>
-<h5 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h5><p><code>left outer join</code> 左外连接：只保存运算中左边的关系的元组</p>
-<p><code>right outer join</code>右外连接</p>
-<p><code>full outer join</code>全外连接</p>
-<h5 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h5><p>虚关系并不预先运算出来，而是在使用的时候才通过执行查询被计算</p>
-<p><code>create view v as &lt;query expression&gt;</code>as 里写的是视图要查询的东西</p>
-<p><strong>物化视图</strong>与通常的视图不一样，它存储着查询结果，并随着实际关系的改变而改变</p>
-<h5 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h5><p>transaction，应用层面的最小的工作单元</p>
-<p>Commit work：提交当前事务，长久的保存在数据库中</p>
-<p>Rollback work：回滚，就像是撤销编辑，如果突然断电将被回滚</p>
-<p>在许多sql实现中，默认方式是每个sql语句自成一个事务，一执行，自动提交</p>
-<p>突然布置了数据库作业，先停一下。。。</p>
-
+<p>这两种都是外连接<br>
+        
+          <a class="article-more-a" href="/数据库第四章基本不会/#more">more >></a>
+        
       
 
       
@@ -605,15 +596,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
               </li>
             
             <div class="clearfix"></div>
