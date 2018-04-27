@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="YUNBLOG">
 <meta property="og:description" content="DDL  is 生产力 好的数据库决定条件很多 键（主键与候选键） 函数依赖函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α]  都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-25T14:50:10.555Z">
+<meta property="og:updated_time" content="2018-04-27T01:20:22.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八章关系数据库设计">
 <meta name="twitter:description" content="DDL  is 生产力 好的数据库决定条件很多 键（主键与候选键） 函数依赖函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α]  都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
@@ -215,13 +215,7 @@
 <h5 id="正则覆盖"><a href="#正则覆盖" class="headerlink" title="正则覆盖"></a>正则覆盖</h5><p>Fc是F的正则覆盖，则F逻辑蕴涵Fc中的所有依赖， 并且Fc逻辑蕴涵F中的所有依赖</p>
 <p>Fc中的任何函数依赖都不含无关属性</p>
 <p>Fc中的函数依赖的左半部分都是唯一的</p>
-<h5 id="闭包的算法"><a href="#闭包的算法" class="headerlink" title="闭包的算法"></a>闭包的算法</h5><p>result:=α;</p>
-<p>while(result发生变化)do</p>
-<p>​    for each 函数依赖β→γ in F do</p>
-<p>​    begin</p>
-<p>​        if β⊂result then result:=result∪β;</p>
-<p>​    end</p>
-<p>明天再写。。。</p>
+<h5 id="闭包的算法"><a href="#闭包的算法" class="headerlink" title="闭包的算法"></a>闭包的算法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">result:=α;</span><br><span class="line"></span><br><span class="line">while(result发生变化)do</span><br><span class="line"></span><br><span class="line">​    for each 函数依赖β→γ in F do</span><br><span class="line"></span><br><span class="line">​    begin</span><br><span class="line"></span><br><span class="line">​        if β⊂result then result:=result∪γ ;</span><br><span class="line"></span><br><span class="line">​    end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
 
