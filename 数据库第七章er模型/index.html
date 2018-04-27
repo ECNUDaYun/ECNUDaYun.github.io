@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="YUNBLOG">
 <meta property="og:description" content="30页还行吧，。 本章基本内容：实体集，联系集，属性，E-R图">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-25T02:28:34.259Z">
+<meta property="og:updated_time" content="2018-04-27T16:09:49.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库第七章er模型">
 <meta name="twitter:description" content="30页还行吧，。 本章基本内容：实体集，联系集，属性，E-R图">
@@ -200,7 +200,18 @@
 <p>多对多：将联系转化为关系模式，主键为两个实体集主码的并集</p>
 <p>多对一：多的主码加到一的关系中</p>
 <p>一对一：随便将一个的主码加到另一个中</p>
-<h4 id="特化，概化以后补上"><a href="#特化，概化以后补上" class="headerlink" title="特化，概化以后补上"></a>特化，概化以后补上</h4><p>。。。。</p>
+<p>update at 2008/4/27 23:30</p>
+<h5 id="特化"><a href="#特化" class="headerlink" title="特化"></a>特化</h5><p>在实体集内部进行分组的过程称为特化</p>
+<p>在ER图中用从特化实体指向另一个实体的空心箭头来表示</p>
+<p>重叠特化（允许）用两个独立的空心箭头，不相交特化使用一个箭头</p>
+<h5 id="概化"><a href="#概化" class="headerlink" title="概化"></a>概化</h5><p>特化的逆过程</p>
+<p>er图中不做区分</p>
+<h5 id="聚集"><a href="#聚集" class="headerlink" title="聚集"></a>聚集</h5><p>联系的联系，也就是联系间的联系</p>
+<h5 id="概化转关系模式"><a href="#概化转关系模式" class="headerlink" title="概化转关系模式"></a>概化转关系模式</h5><p>有两种选择</p>
+<p>第一种：高层实体集建一张表，低层的也建表，底层中把高层的主键作为外键</p>
+<p>第二种：不要高层的表，把每个低层建表</p>
+<h5 id="聚集的建表"><a href="#聚集的建表" class="headerlink" title="聚集的建表"></a>聚集的建表</h5><p>把联系集的主码并到一起（具体参考书上的例子）</p>
+<p>本章感觉还是不是特别清晰……..</p>
 
       
 
@@ -459,11 +470,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
               </li>
             
             <div class="clearfix"></div>
