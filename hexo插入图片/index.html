@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hexo插入图片 | YUNBLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo 插入图片操作比较奇怪，弄了很久这里写下成功的一种办法：使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。第二种：在public中的对应文件(和md的名字一样)中放入图片">
+  <meta name="description" content="hexo 插入图片操作比较奇怪，弄了很久这里写下成功的一种办法：使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。第二种：在public中的对应文件(和md的名字一样)中放入图片 这样的话会有个问题 在hexo clean命令之后public中的图片会被删掉">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo插入图片">
 <meta property="og:url" content="http://yoursite.com/hexo插入图片/index.html">
 <meta property="og:site_name" content="YUNBLOG">
-<meta property="og:description" content="hexo 插入图片操作比较奇怪，弄了很久这里写下成功的一种办法：使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。第二种：在public中的对应文件(和md的名字一样)中放入图片">
+<meta property="og:description" content="hexo 插入图片操作比较奇怪，弄了很久这里写下成功的一种办法：使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。第二种：在public中的对应文件(和md的名字一样)中放入图片 这样的话会有个问题 在hexo clean命令之后public中的图片会被删掉">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/hexo插入图片/初音.jpg">
-<meta property="og:updated_time" content="2018-04-25T07:05:54.878Z">
+<meta property="og:updated_time" content="2018-05-01T14:33:27.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo插入图片">
-<meta name="twitter:description" content="hexo 插入图片操作比较奇怪，弄了很久这里写下成功的一种办法：使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。第二种：在public中的对应文件(和md的名字一样)中放入图片">
+<meta name="twitter:description" content="hexo 插入图片操作比较奇怪，弄了很久这里写下成功的一种办法：使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。第二种：在public中的对应文件(和md的名字一样)中放入图片 这样的话会有个问题 在hexo clean命令之后public中的图片会被删掉">
 <meta name="twitter:image" content="http://yoursite.com/hexo插入图片/初音.jpg">
   
     <link rel="alternative" href="/atom.xml" title="YUNBLOG" type="application/atom+xml">
@@ -161,7 +161,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="hexo-插入图片操作比较奇怪，弄了很久"><a href="#hexo-插入图片操作比较奇怪，弄了很久" class="headerlink" title="hexo 插入图片操作比较奇怪，弄了很久"></a>hexo 插入图片操作比较奇怪，弄了很久</h3><p>这里写下成功的一种办法：<br>使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。<br>第二种：在public中的对应文件(和md的名字一样)中放入图片<br><a id="more"></a><br>书写方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/hexo插入图片/初音.jpg&quot;&gt;</span><br></pre></td></tr></table></figure><br><img src="/hexo插入图片/初音.jpg"></p>
+        <h3 id="hexo-插入图片操作比较奇怪，弄了很久"><a href="#hexo-插入图片操作比较奇怪，弄了很久" class="headerlink" title="hexo 插入图片操作比较奇怪，弄了很久"></a>hexo 插入图片操作比较奇怪，弄了很久</h3><p>这里写下成功的一种办法：<br>使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。<br>第二种：在public中的对应文件(和md的名字一样)中放入图片</p>
+<p>这样的话会有个问题</p>
+<p>在hexo clean命令之后public中的图片会被删掉</p>
+<a id="more"></a>
+<p>书写方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/hexo插入图片/初音.jpg&quot;&gt;</span><br></pre></td></tr></table></figure><br><img src="/hexo插入图片/初音.jpg"></p>
 
       
 
@@ -420,11 +424,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
               </li>
             
             <div class="clearfix"></div>
