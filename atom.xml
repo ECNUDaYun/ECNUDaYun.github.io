@@ -138,28 +138,6 @@
   </entry>
   
   <entry>
-    <title>hexo插入图片</title>
-    <link href="http://yoursite.com/hexo%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/hexo%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/"/>
-    <id>http://yoursite.com/hexo插入图片/hexo插入图片/</id>
-    <published>2018-04-24T01:21:10.000Z</published>
-    <updated>2018-05-01T14:33:27.857Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="hexo-插入图片操作比较奇怪，弄了很久"><a href="#hexo-插入图片操作比较奇怪，弄了很久" class="headerlink" title="hexo 插入图片操作比较奇怪，弄了很久"></a>hexo 插入图片操作比较奇怪，弄了很久</h3><p>这里写下成功的一种办法：<br>使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。<br>第二种：在public中的对应文件(和md的名字一样)中放入图片</p><p>这样的话会有个问题</p><p>在hexo clean命令之后public中的图片会被删掉</p><a id="more"></a><p>书写方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/hexo插入图片/初音.jpg&quot;&gt;</span><br></pre></td></tr></table></figure><br><img src="/hexo插入图片/hexo插入图片/初音.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;hexo-插入图片操作比较奇怪，弄了很久&quot;&gt;&lt;a href=&quot;#hexo-插入图片操作比较奇怪，弄了很久&quot; class=&quot;headerlink&quot; title=&quot;hexo 插入图片操作比较奇怪，弄了很久&quot;&gt;&lt;/a&gt;hexo 插入图片操作比较奇怪，弄了很久&lt;/h3&gt;&lt;p&gt;这里写下成功的一种办法：&lt;br&gt;使用本地路径：在hexo/source目录下新建一个img文件夹，将图片放入该文件夹下，插入图片时链接即为/img/图片名称。&lt;br&gt;第二种：在public中的对应文件(和md的名字一样)中放入图片&lt;/p&gt;
-&lt;p&gt;这样的话会有个问题&lt;/p&gt;
-&lt;p&gt;在hexo clean命令之后public中的图片会被删掉&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>servlet通过jdbc访问数据库</title>
     <link href="http://yoursite.com/jdbc%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/"/>
     <id>http://yoursite.com/jdbc插入数据/</id>
