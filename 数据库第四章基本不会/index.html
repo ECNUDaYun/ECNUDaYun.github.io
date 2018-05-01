@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="YUNBLOG">
 <meta property="og:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-25T02:31:55.713Z">
+<meta property="og:updated_time" content="2018-04-29T15:30:51.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库第四章基本不会....">
 <meta name="twitter:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
@@ -172,7 +172,12 @@
 <p>Commit work：提交当前事务，长久的保存在数据库中</p>
 <p>Rollback work：回滚，就像是撤销编辑，如果突然断电将被回滚</p>
 <p>在许多sql实现中，默认方式是每个sql语句自成一个事务，一执行，自动提交</p>
-<p>突然布置了数据库作业，先停一下。。。</p>
+<h5 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h5><p>not null ， unique ， check子句</p>
+<p><code>unique (Aj1,Aj2,Aj3,...,Ajn)</code> 表示Aj1,Aj2,Aj3,…,Ajn形成了一个候选码</p>
+<p><code>check(P)</code>  P是一个谓词</p>
+<p>foreign key</p>
+<p><code>foreign key(dept_name)reference department</code> 建立外键</p>
+<p>参照完整性约束：dept_name 的值必须是department关系中有的</p>
 
       
 
@@ -431,11 +436,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
             
             <div class="clearfix"></div>

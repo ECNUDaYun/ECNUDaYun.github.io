@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>第八章关系数据库设计 | YUNBLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DDL  is 生产力 好的数据库决定条件很多 键（主键与候选键） 函数依赖函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α]  都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
+  <meta name="description" content="DDL  is 生产力 好的数据库决定条件很多 键（主键与候选键） The key attributes uniquely identify the tuple. 函数依赖函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α]  都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第八章关系数据库设计">
 <meta property="og:url" content="http://yoursite.com/第八章关系数据库设计/index.html">
 <meta property="og:site_name" content="YUNBLOG">
-<meta property="og:description" content="DDL  is 生产力 好的数据库决定条件很多 键（主键与候选键） 函数依赖函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α]  都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
+<meta property="og:description" content="DDL  is 生产力 好的数据库决定条件很多 键（主键与候选键） The key attributes uniquely identify the tuple. 函数依赖函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α]  都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-27T01:20:22.204Z">
+<meta property="og:updated_time" content="2018-05-01T09:13:39.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八章关系数据库设计">
-<meta name="twitter:description" content="DDL  is 生产力 好的数据库决定条件很多 键（主键与候选键） 函数依赖函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α]  都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
+<meta name="twitter:description" content="DDL  is 生产力 好的数据库决定条件很多 键（主键与候选键） The key attributes uniquely identify the tuple. 函数依赖函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α]  都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
   
     <link rel="alternative" href="/atom.xml" title="YUNBLOG" type="application/atom+xml">
   
@@ -162,14 +162,25 @@
         <p> DDL  is 生产力</p>
 <h4 id="好的数据库"><a href="#好的数据库" class="headerlink" title="好的数据库"></a>好的数据库</h4><p>决定条件很多</p>
 <p><strong>键</strong>（主键与候选键）</p>
+<p>The key attributes uniquely identify the tuple.</p>
 <h5 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h5><p>函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A</p>
 <p>若对每个元组对t1，t2 <code>t1[α]=t2[α]</code>  都有<code>t1[β]=t2[β]</code> 那么有 α–&gt;β</p>
 <a id="more"></a>
 <p><strong>完全依赖</strong>  α的任意真子集α‘都是不满足 α’–&gt;β</p>
 <p><strong>平凡的函数依赖</strong> 在所有的关系中都满足 比如a,b–&gt;a</p>
 <h5 id="有损分解-无损分解"><a href="#有损分解-无损分解" class="headerlink" title="有损分解 无损分解"></a>有损分解 无损分解</h5><p>分解之后通过自然连接得到的关系与原来的相同就是有损</p>
-<h5 id="保持依赖"><a href="#保持依赖" class="headerlink" title="保持依赖"></a>保持依赖</h5><h5 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h5><p>所有的属性都是原子的就是第一范式</p>
-<h5 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h5><p>如果关系模式R是第一范式的，而且关系中每一个非主属性不部分依赖于主键，称R是第二范式的</p>
+<h5 id="无关属性Canonical-Cover"><a href="#无关属性Canonical-Cover" class="headerlink" title="无关属性Canonical Cover"></a>无关属性Canonical Cover</h5><p>Example1:Given F= {A—&gt;C, AB —&gt; C }</p>
+<p>B is extraneous in AB —&gt; C  because {A —&gt; C,AB—&gt;C }logically implies A —&gt; C(I.e.the result of dropping B from AB —&gt; C).</p>
+<p>Example2:  Given F = {A  —&gt; C, AB  —&gt; CD}</p>
+<p>C  is extraneous in AB —&gt; CD since  AB —&gt; D can be inferred even after deleting C</p>
+<h5 id="保持函数依赖"><a href="#保持函数依赖" class="headerlink" title="保持函数依赖"></a>保持函数依赖</h5><p>第一种算法</p>
+<p>A  decomposition is  dependency preserving,  if</p>
+<p>​         (F1 U F2 U  … U  Fn)+ = F+</p>
+<p>第二种算法（看不懂这个操作）</p>
+<p>result = a<br>while (changes to result) do<br>  for each Ri in the decomposition<br>      t = (result ∩ Ri)+ ∩ Ri<br>     result  = result  U  t</p>
+<p>If result contains all attributes in b, then the functional dependency a-&gt;b is preserved</p>
+<h5 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h5><p>所有的属性都是原子的就是第一范式</p>
+<h5 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h5><p>如果关系模式R是第一范式的，而且关系中每一个非主属性不<strong>部分</strong>依赖于主键，称R是第二范式的</p>
 <p>例子</p>
 <table>
 <thead>
@@ -209,13 +220,24 @@
 <p>应该改成两张表 </p>
 <h5 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h5><p>要求所有非键属性都<strong>只和</strong>候选键有相关性，也就是说非键属性之间应该是独立无关的</p>
 <p>所有的依赖没有传递</p>
+<p>Third condition is a minimal relaxation of BCNF to ensure dependency preservation .</p>
 <h5 id="BC范式"><a href="#BC范式" class="headerlink" title="BC范式"></a>BC范式</h5><p>能消除所有基于函数依赖可以发现的冗余</p>
 <p>要求 F+中所有α–&gt;β的函数依赖</p>
 <p>要么α是超键  要么是平凡的函数依赖</p>
-<h5 id="正则覆盖"><a href="#正则覆盖" class="headerlink" title="正则覆盖"></a>正则覆盖</h5><p>Fc是F的正则覆盖，则F逻辑蕴涵Fc中的所有依赖， 并且Fc逻辑蕴涵F中的所有依赖</p>
-<p>Fc中的任何函数依赖都不含无关属性</p>
-<p>Fc中的函数依赖的左半部分都是唯一的</p>
+<h5 id="正则覆盖-Canonical-Cover"><a href="#正则覆盖-Canonical-Cover" class="headerlink" title="正则覆盖 Canonical Cover"></a>正则覆盖 Canonical Cover</h5><p>Fc是F的正则覆盖，则F逻辑蕴涵Fc中的所有依赖， 并且Fc逻辑蕴涵F中的所有依赖</p>
+<p>1.Fc中的任何函数依赖都不含无关属性<br>2.Fc中的函数依赖的左半部分都是唯一的</p>
 <h5 id="闭包的算法"><a href="#闭包的算法" class="headerlink" title="闭包的算法"></a>闭包的算法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">result:=α;</span><br><span class="line"></span><br><span class="line">while(result发生变化)do</span><br><span class="line"></span><br><span class="line">​    for each 函数依赖β→γ in F do</span><br><span class="line"></span><br><span class="line">​    begin</span><br><span class="line"></span><br><span class="line">​        if β⊂result then result:=result∪γ ;</span><br><span class="line"></span><br><span class="line">​    end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="bc范式分解"><a href="#bc范式分解" class="headerlink" title="bc范式分解"></a>bc范式分解</h5><p>Suppose we have a schema R and a non-trivial dependency α-&gt;β causes a violation of BCNF. We decompose R into:</p>
+<p>•R1= (α U β)</p>
+<p>•R2= (R - ( β- α))</p>
+<p><strong>Example</strong></p>
+<p>instr_dept (ID,name,salary, dept_name, building, budget )</p>
+<p>α = dept_name(not key)</p>
+<p>β=building, budget</p>
+<p>F: {dept_name–&gt;building,budget}</p>
+<p>and inst_dept is replaced by</p>
+<p>R1= (α U β)= ( dept_name,building, budget )</p>
+<p>R2=(R - ( β- α)) = ( ID, name, salary, dept_name )</p>
 
       
 
@@ -465,11 +487,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
             
             <div class="clearfix"></div>
