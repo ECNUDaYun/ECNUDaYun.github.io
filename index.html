@@ -301,32 +301,74 @@
     <article id="post-第八章关系数据库设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/第八章关系数据库设计/">第八章关系数据库设计</a>
-    </h1>
-  
-
-        
-        <a href="/第八章关系数据库设计/" class="archive-article-date">
-  	<time datetime="2018-04-25T11:19:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-25</time>
-</a>
-        
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p> DDL  is 生产力</p>
-<h4 id="好的数据库"><a href="#好的数据库" class="headerlink" title="好的数据库"></a>好的数据库</h4><p>决定条件很多</p>
-<p><strong>键</strong>（主键与候选键）</p>
-<p>The key attributes uniquely identify the tuple.</p>
-<h5 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h5><p>函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A</p>
-<p>若对每个元组对t1，t2 <code>t1[α]=t2[α]</code>  都有<code>t1[β]=t2[β]</code> 那么有 α–&gt;β</p>
-        
-          <a class="article-more-a" href="/第八章关系数据库设计/#more">more >></a>
-        
+        <p>- - - <br> <br> t i t l e :   ,{kQ�zsQ�|penc�^����<br> <br> d a t e :   2 0 1 8 - 0 4 - 2 5   1 9 : 1 9 : 1 1 <br> <br> t a g s :   penc�^     <br> <br> - - - <br> <br> <br> <br>   D D L     i s   u�N�R<br> <br> <br> <br> # # # #   }Y�vpenc�^<br> <br> <br> <br> �Q�[ag�N�_Y<br> <br> <br> <br> <em> </em> .�<em> </em> �;N.�NP    �.�    �<br> <br> <br> <br> T h e   k e y   a t t r i b u t e s   u n i q u e l y   i d e n t i f y   t h e   t u p l e . <br> <br> <br> <br> # # # # #   �Qpe�OV�<br> <br> <br> <br> �Qpe�OV��{US0W�1\/f^\’<code>ƖA �Q�[^\&#39;</code>ƖB �RB �OV��N^\’<code>A 
+ 
+ 
+ 
+ ��[�k*NCQ�~�[t 1 �t 2   </code> t 1 [ �] = t 2 [ �] <code>     ��    g</code> t 1 [ �] = t 2 [ �] <code>   ��HN    g  �- - &gt; �
+ 
+ 
+ 
+ &lt; ! - - m o r e - - &gt; 
+ 
+ 
+ 
+ * * �[hQ�OV�* *     ��v�NawP[Ɩ� ��/f
+N�n��  � - - &gt; �
+ 
+ 
+ 
+ * * s^�Q�v�Qpe�OV�* *   (W@b    g�vsQ�|-N���n��  �k�Ya , b - - &gt; a 
+ 
+ 
+ 
+ # # # # #       g_cR�  �e_cR�
+ 
+ 
+ 
+ R�KNT�Ǐ�6qޏ�c�_0R�vsQ�|N�Seg�v�vT1\/f    g_c
+ 
+ 
+ 
+ # # # # #   �esQ^\&#39;</code>C a n o n i c a l   C o v e r <br> <br> <br> <br> E x a m p l e 1 : G i v e n   F =   { A  &gt; C ,   A B    &gt;   C   } <br> <br> <br> <br> B   i s   e x t r a n e o u s   i n   A B    &gt;   C     b e c a u s e   { A    &gt;   C , A B  &gt; C   } l o g i c a l l y   i m p l i e s   A    &gt;   C ( I . e . t h e   r e s u l t   o f   d r o p p i n g   B   f r o m   A B    &gt;   C ) . <br> <br> <br> <br> E x a m p l e 2 :     G i v e n   F   =   { A      &gt;   C ,   A B      &gt;   C D } <br> <br> <br> <br> C     i s   e x t r a n e o u s   i n   A B    &gt;   C D   s i n c e     A B    &gt;   D   c a n   b e   i n f e r r e d   e v e n   a f t e r   d e l e t i n g   C <br> <br> <br> <br> # # # # #   �Oc�Qpe�OV�<br> <br> <br> <br> ,{ N�y�{�l<br> <br> <br> <br> A     d e c o m p o s i t i o n   i s     d e p e n d e n c y   p r e s e r v i n g ,     i f <br> <br> <br> <br>                    ( F 1   U   F 2   U     &amp;   U     F n ) +   =   F + <br> <br> <br> <br> ,{�N�y�{�l�w<br>N�aُ<em>N�d\O    �<br> <br> <br> <br> r e s u l t   =   a <br> <br> w h i l e   ( c h a n g e s   t o   r e s u l t )   d o <br> <br>     f o r   e a c h   R i   i n   t h e   d e c o m p o s i t i o n <br> <br>          t   =   ( r e s u l t   )”  R i ) +   )”  R i <br> <br>        r e s u l t     =   r e s u l t     U     t <br> <br> <br> <br> I f   r e s u l t   c o n t a i n s   a l l   a t t r i b u t e s   i n   b ,   t h e n   t h e   f u n c t i o n a l   d e p e n d e n c y   a - &gt; b   i s   p r e s e r v e d <br> <br> <br> <br> # # # # #   ,{ N�_<br> <br> <br> <br> @b    g�v^\’`��/f�SP[�v1\/f,{ N�_<br> <br> <br> <br> # # # # #   ,{�N�_<br> <br> <br> <br> �Y�gsQ�|!j<em>R /f,{ N�</em>�v��NsQ�|-N�k N</em>N^�;N^\’<code>N* * �R* * �OV��N;N.���yR /f,{�N�_�v
+ 
+ 
+ 
+ �OP[
+ 
+ 
+ 
+ |   �~�N  I D   �;N.�    �  |   �N&lt;h    |   �O�^FUI D   �;N.�    �  |   �O�^FU
+T�y            |   �O�^FUOO@W  | 
+ 
+ |   - - - - - - - - - - - - - - - -   |   - - - - -   |   - - - - - - - - - - - - - - - - -   |   - - - - - - - - - - - - - - -   |   - - - - - - - - - -   | 
+ 
+ |   6 5                               |   5 9 . 9 9   |   1                                   |   S t y l i z e d   P a r t s     |   V A                   | 
+ 
+ |   7 3                               |   2 0 . 0 0   |   1                                   |   S t y l i z e d   P a r t s     |   V A                   | 
+ 
+ |   6 5                               |   6 9 . 9 9   |   2                                   |   A C M E   I n d u s t r i e s   |   C A                   | 
+ 
+ 
+ 
+ �O�^FU�v
+T�y�TOO@W1\�S�T�O�^FU  I D       gsQ��R�OV�    ��ُ
+N9SM�,{�N�_�v�SR
+ 
+ 
+ 
+ �^�9eb$N _h�  
+ 
+ 
+ 
+ # # # # #   ,{    N�_
+ 
+ 
+ 
+ ��Bl@b    g^�.�^\&#39;</code>��<em> </em> �S�T<em> </em> P    �.�    g�vsQ’<code>�_N1\/f�^�.�^\&#39;</code>KN�^�/f�r�z�esQ�v<br> <br> <br> <br> @b    g�v�OV��l    g O�<br> <br> <br> <br> T h i r d   c o n d i t i o n   i s   a   m i n i m a l   r e l a x a t i o n   o f   B C N F   t o   e n s u r e   d e p e n d e n c y   p r e s e r v a t i o n   . <br> <br> <br> <br> # # # # #   B C �_<br> <br> <br> <br> ���md�@b    g�W�N�Qpe�OV��S�N�S�s�v�QYO<br> <br> <br> <br> ��Bl  F + -N@b    g�- - &gt; ��v�Qpe�OV�<br> <br> <br> <br> ��HN�/f��.�    ��HN/fs^�Q�v�Qpe�OV�<br> <br> <br> <br> # # # # #   ckR���v  C a n o n i c a l   C o v e r <br> <br> <br> <br> F c /fF �vckR���v�RF ;���t��mF c -N�v@b    g�OV��  v^NF c ;���t��mF -N�v@b    g�OV�<br> <br> <br> <br> 1 . F c -N�v�NUO�Qpe�OV���<br>N+T�esQ^\’`<br> <br> 2 . F c -N�v�Qpe�OV��v�]JS�R��/f/U N�v<br> <br> <br> <br> # # # # #   �S�v�{�l<br> <br> <br> <br> <br> <br> { %   c o d e b l o c k % } <br> <br> <br> <br> r e s u l t : = �; <br> <br> <br> <br> w h i l e ( r e s u l t �Su�SS) d o <br> <br> <br> <br>          f o r   e a c h   �Qpe�OV���!�  i n   F   d o <br> <br> <br> <br>          b e g i n <br> <br> <br> <br>                  i f   ��”r e s u l t   t h e n   r e s u l t : = r e s u l t <em>“�  ; <br> <br> <br> <br>          e n d <br> <br> <br> <br> { %   e n d c o d e b l o c k   % } <br> <br> <br> <br> # # # # #   b c �_R�<br> <br> <br> <br> S u p p o s e   w e   h a v e   a   s c h e m a   R   a n d   a   n o n - t r i v i a l   d e p e n d e n c y   �- &gt; �  c a u s e s   a   v i o l a t i o n   o f   B C N F .   W e   d e c o m p o s e   R   i n t o : <br> <br> <br> <br> ” R 1 =   ( �  U   �) <br> <br> <br> <br> ” R 2 =   ( R   -   (   �-   �) ) <br> <br> <br> <br> </em> <em> E x a m p l e </em> * <br> <br> <br> <br> i n s t r <em> d e p t   ( I D , n a m e , s a l a r y ,   d e p t </em> n a m e ,   b u i l d i n g ,   b u d g e t   ) <br> <br> <br> <br> �  =   d e p t <em> n a m e ( n o t   k e y ) <br> <br> <br> <br> �= b u i l d i n g ,   b u d g e t <br> <br> <br> <br> F :   { d e p t </em> n a m e - - &gt; b u i l d i n g , b u d g e t } <br> <br> <br> <br> a n d   i n s t <em> d e p t   i s   r e p l a c e d   b y <br> <br> <br> <br> R 1 =   ( �  U   �) =   (   d e p t </em> n a m e , b u i l d i n g ,   b u d g e t   ) <br> <br> <br> <br> R 2 = ( R   -   (   �-   �) )   =   (   I D ,   n a m e ,   s a l a r y ,   d e p t _ n a m e   ) <br> <br> <br> <br> # # # # #   R㉗{�l<br> <br> <br> <br> { %   i m g     / ,{kQ�zsQ�|penc�^����/ 5 . 2 ( 4 ) . j p g   % } <br> <br> <br> <br> <br> <br> <br> <br> </p>
+
       
 
       
@@ -334,17 +376,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
