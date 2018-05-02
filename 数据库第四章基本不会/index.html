@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="云之学习之路">
 <meta property="og:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T08:56:03.209Z">
+<meta property="og:updated_time" content="2018-05-02T08:58:28.690Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库第四章基本不会....">
 <meta name="twitter:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
@@ -188,7 +188,7 @@
 <p>not null ， unique ， check子句</p>
 <p><code>unique (Aj1,Aj2,Aj3,...,Ajn)</code> 表示Aj1,Aj2,Aj3,…,Ajn形成了一个候选码</p>
 <p><code>check(P)</code>  P是一个谓词</p>
-<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**create table** section(</span><br><span class="line">.....</span><br><span class="line">**check** (semester **in** (&apos;Fall&apos;,&apos;Spring&apos;,&apos;Winter&apos;,&apos;Summer&apos;) ) );</span><br></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**create table** section(</span><br><span class="line">.....</span><br><span class="line">check (semester **in** (&apos;Fall&apos;,&apos;Spring&apos;,&apos;Winter&apos;,&apos;Summer&apos;) ) );</span><br></pre></td></tr></table></figure></p>
 <p>foreign key</p>
 <p><code>foreign key(dept_name)reference department</code> 建立外键</p>
 <p>参照完整性约束：dept_name 的值必须是department关系中主码对应的属性有的</p>
@@ -222,7 +222,7 @@
 <p>用户定义类型Dollars订一位总共12位数字的十进制数，其中两位放在十进制小数点后。 </p>
 <p>在此关键字final并不是真的有意义，SQL：1999标准要求的。 </p>
 <p>例： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table department( </span><br><span class="line">dept_name varchar(20), </span><br><span class="line">building varchar(15), </span><br><span class="line">budget *Dollars* );</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table department( </span><br><span class="line">dept_name varchar(20), </span><br><span class="line">building varchar(15), </span><br><span class="line">budget Dollars );</span><br></pre></td></tr></table></figure>
 <p><strong>drop type</strong>／<strong>alter type</strong>：删除／修改以前创建过的类型。</p>
 <p><strong>create domain 可以定义一个域</strong> 域是可以声明约束的，并且域是可以可以赋值给另一个域，只要基本类型是相同的</p>
 <h5 id="create-table的扩展"><a href="#create-table的扩展" class="headerlink" title="create table的扩展"></a>create table的扩展</h5><p><code>create table temp_instructor like instructor;</code>  创建一个与instructor模式相同的表</p>
