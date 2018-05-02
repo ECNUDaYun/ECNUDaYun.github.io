@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="云之学习之路">
 <meta property="og:description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The keyattributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ecnudayun.coding.me/第八章关系数据库设计/5.2(4).jpg">
-<meta property="og:updated_time" content="2018-05-02T13:35:55.718Z">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201108/1/0_13122049151J1Q.gif">
+<meta property="og:updated_time" content="2018-05-02T16:04:54.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八章关系数据库设计">
 <meta name="twitter:description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The keyattributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
-<meta name="twitter:image" content="https://ecnudayun.coding.me/第八章关系数据库设计/5.2(4).jpg">
+<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201108/1/0_13122049151J1Q.gif">
   
     <link rel="alternative" href="/atom.xml" title="云之学习之路" type="application/atom+xml">
   
@@ -244,8 +244,8 @@
 <p>1.Fc中的任何函数依赖都不含无关属性2.Fc中的函数依赖的左半部分都是唯一的</p>
 <p><strong>闭包的算法</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">result:=α;</span><br><span class="line"></span><br><span class="line">while(result发生变化)do</span><br><span class="line"></span><br><span class="line">for each 函数依赖β→γ in F do</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line"></span><br><span class="line"> if β?result then result:=result∪γ ;</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>bc**</strong>范式分解**</p>
-<p>Suppose we havea schema R and a non-trivial dependency α-&gt;β causes a violation of BCNF. Wedecompose R into:</p>
+<p><strong>bc范式分解</strong></p>
+<p>Suppose we have a schema R and a non-trivial dependency α-&gt;β causes a violation of BCNF. We decompose R into:</p>
 <p>R1= (α U β)</p>
 <p>R2= (R - ( β-α))</p>
 <p><strong>Example</strong></p>
@@ -256,8 +256,7 @@
 <p>and inst_dept isreplaced by</p>
 <p>R1= (α U β)= (dept_name,building, budget )</p>
 <p>R2=(R - ( β- α))= ( ID, name, salary, dept_name )</p>
-<p><strong>分解算法</strong></p>
-<img src="/第八章关系数据库设计/5.2(4).jpg">
+<p> <img src="http://img.my.csdn.net/uploads/201108/1/0_13122049151J1Q.gif" alt=""></p>
 
       
 
