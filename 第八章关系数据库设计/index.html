@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="云之学习之路">
 <meta property="og:description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The keyattributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T16:26:11.264Z">
+<meta property="og:updated_time" content="2018-05-02T16:28:48.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八章关系数据库设计">
 <meta name="twitter:description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The keyattributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
@@ -255,20 +255,22 @@
 <p>R1= (α U β)= (dept_name,building, budget )</p>
 <p>R2=(R - ( β- α))= ( ID, name, salary, dept_name )</p>
 <p><strong>bcnf分解算法实现：</strong></p>
+<p>输入：关系模式R及其函数依赖集F。</p>
+<p>输出：R的一个无损联接分解，其中每一个子关系模式都满足F在其上投影的BCNF。</p>
 <p>反复运用逐步分解定理，逐步分解关系模式R，</p>
 <p>使得每次分解都具有无损联接性，而且</p>
 <p>每次分解出来的子关系模式至少有一个是BCNF的，</p>
 <p>即：</p>
 <p>1）置初值ρ={R}；</p>
 <p>2）检查ρ中的关系模式，如果均属BCNF，则转4）；</p>
-<p>3）在ρ中找出不属于BCNF的关系模式S，那么必有X→A∈F+，（A不包含于X），且X不是S的关键字。因此XA必不包含S的全部属性。把S分解为{S1，S2}，其中S1=XA，S2=(S-A)X，</p>
-<p>并以{S1，S2}代替ρ中的S，返回2）</p>
+<p>3）在ρ中找出不属于BCNF的关系模式S，那么必有X→A∈F+，（A不包含于X），且X不是S的关键字。因此XA不包含S的全部属性。把S分解为{S1，S2}，其中S1=XA，S2=(S-A)X，并以{S1，S2}代替ρ中的S，返回2）</p>
 <p>4）终止分解，输出ρ。</p>
 <p><strong>3nf分解 算法实现：</strong></p>
+<p>输入：关系模式R及其上的最小函数依赖集F。</p>
+<p>输出：R的保持函数依赖的分解，其中每一个关系模式是关于F在其上投影的<strong>3NF</strong>。</p>
 <p>1)如果R中存在一些不在F中出现的属性，</p>
 <p>则将它们单独构成一个关系模式，并从模式R中消去；</p>
-<p>2)如果F中有一个函数依赖X→A，且XA=R，则R不用分解，</p>
-<p>算法终止；</p>
+<p>2)如果F中有一个函数依赖X→A，且XA=R，则R不用分解，算法终止；</p>
 <p>3)对F中的每一个函数依赖X→A，构造一个关系模式XA。</p>
 <p>如果X→A1,X→A2,…,X→An均属于F，则构造一个关系模式XA1A2…An。</p>
 
