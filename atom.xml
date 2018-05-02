@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-02T01:19:09.926Z</updated>
+  <updated>2018-05-02T01:24:53.539Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0/"/>
     <id>http://yoursite.com/关系代数/</id>
     <published>2018-05-01T14:31:54.000Z</published>
-    <updated>2018-05-02T01:19:09.926Z</updated>
+    <updated>2018-05-02T01:24:53.539Z</updated>
     
-    <content type="html"><![CDATA[<h5 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h5><p>选择<strong>（Selection）</strong>σ</p><p>投影<strong>（Projection）</strong>Π</p><p>并<strong>（Union）</strong>∪</p><p>集合差<strong>（Difference）</strong>-</p><p>笛卡尔积<strong>（cartesian product）</strong> x</p><p>更名<strong>（rename）</strong>ρ<sub>x</sub></p><a id="more"></a><p>1.选择</p><p>用小写sigma(σ)表示，下标为谓词，括号中为参数关系</p><p>σ<sub>dept_name</sub>=”Physics”(instructor)</p><p><img src="/关系代数/C:/Users\dayun\AppData\Local\Temp\1525223929203.png" alt="1525223929203"></p>]]></content>
+    <content type="html"><![CDATA[<h5 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h5><p>选择<strong>（Selection）</strong>σ</p><p>投影<strong>（Projection）</strong>Π</p><p>并<strong>（Union）</strong>∪</p><p>集合差<strong>（Difference）</strong>-</p><p>笛卡尔积<strong>（cartesian product）</strong> x</p><p>更名<strong>（rename）</strong>ρ<sub>x</sub></p><a id="more"></a><p>1.选择</p><p>用小写sigma(σ)表示，下标为谓词，括号中为参数关系</p><p>σ<sub>dept_name</sub>=”Physics”(instructor)</p><img src="/关系代数/5.2(1).jpg">]]></content>
     
     <summary type="html">
     
