@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="云之学习之路">
 <meta property="og:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-29T15:30:51.910Z">
+<meta property="og:updated_time" content="2018-05-02T07:36:17.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库第四章基本不会....">
 <meta name="twitter:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
@@ -171,7 +171,15 @@
 <p><code>full outer join</code>全外连接</p>
 <h5 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h5><p>虚关系并不预先运算出来，而是在使用的时候才通过执行查询被计算</p>
 <p><code>create view v as &lt;query expression&gt;</code>as 里写的是视图要查询的东西</p>
+<p>eg.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">create view faculty as </span><br><span class="line"></span><br><span class="line">select ID,name,dept_name</span><br><span class="line"></span><br><span class="line">from instroctor;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>物化视图</strong>与通常的视图不一样，它存储着查询结果，并随着实际关系的改变而改变</p>
+<p>书上写的一般不允许对视图进行修改</p>
+<p>（可更新的）可修改的情况：</p>
+<p>1.from 子句只有一个关系</p>
+<p>2.select 子句只包含关系的属性名，不包含表达式，聚集函数，distinct</p>
+<p>3.任何没有出现在select中的属性都允许为空值</p>
+<p>4.查询中不包括group by 和having</p>
 <h5 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h5><p>transaction，应用层面的最小的工作单元</p>
 <p>Commit work：提交当前事务，长久的保存在数据库中</p>
 <p>Rollback work：回滚，就像是撤销编辑，如果突然断电将被回滚</p>
