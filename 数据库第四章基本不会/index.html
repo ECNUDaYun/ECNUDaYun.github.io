@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://ecnudayun.coding.me">
   <title>数据库第四章基本不会.... | 云之学习之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[TOC] 中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
+  <meta name="description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库第四章基本不会....">
 <meta property="og:url" content="https://ecnudayun.coding.me/数据库第四章基本不会/index.html">
 <meta property="og:site_name" content="云之学习之路">
-<meta property="og:description" content="[TOC] 中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
+<meta property="og:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T08:01:56.907Z">
+<meta property="og:updated_time" content="2018-05-02T08:56:03.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库第四章基本不会....">
-<meta name="twitter:description" content="[TOC] 中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
+<meta name="twitter:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
   
     <link rel="alternative" href="/atom.xml" title="云之学习之路" type="application/atom+xml">
   
@@ -163,8 +163,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h4 id="中级sql"><a href="#中级sql" class="headerlink" title="中级sql"></a>中级sql</h4><h5 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h5><p>第一种方式<code>A join B using（P1，P2...）</code>要求A，B都要有相同的属性名P1,P2…..</p>
+        <h3 id="中级sql"><a href="#中级sql" class="headerlink" title="中级sql"></a>中级sql</h3><h5 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h5><p>第一种方式<code>A join B using（P1，P2...）</code>要求A，B都要有相同的属性名P1,P2…..</p>
 <p>第二种方式<code>A join B on P</code>P和where语句的差不多的写法</p>
 <p>这两种都是外连接<br><a id="more"></a></p>
 <h5 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h5><p><code>left outer join</code> 左外连接：只保存运算中左边的关系的元组</p>
@@ -197,13 +196,56 @@
 <p><code>dept_name varchar(20)references department</code></p>
 <p><strong>当违反参照完整性约束时</strong></p>
 <p>一般情况是拒绝</p>
-<p>如果有其他申明则不同</p>
+<p>如果有其他声明则不同</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table course（...</span><br><span class="line">foreign key(dept_name)reference department</span><br><span class="line">	on delete cascade</span><br><span class="line">	on update cascade，</span><br><span class="line">...);</span><br></pre></td></tr></table></figure>
 <p>因为<code>on delete cascade</code>在删除department中的元组导致此参照完整姓被破坏时，选择级联删除</p>
 <p>因为<code>on update cascade</code>在更新的时候也是采用级联更新</p>
 <p>还可以进行置为null的操作把cascade改为set null</p>
 <hr>
-<p>下面书上开始</p>
+<p>下面书上开始迷幻操作</p>
+<h5 id="事务中对完整性约束的违反"><a href="#事务中对完整性约束的违反" class="headerlink" title="事务中对完整性约束的违反"></a>事务中对完整性约束的违反</h5><p>sql标准允许完整性约束的检查不是在事务的中间步骤检查而是在事务结束后检查（<strong>在许多数据库中不允许</strong>）</p>
+<p>将initial deferred 子句加到约束声明中</p>
+<h5 id="断言（？？？）"><a href="#断言（？？？）" class="headerlink" title="断言（？？？）"></a>断言（？？？）</h5><p>CREATE ASSERTION&lt;断言名&gt;</p>
+<p>CHECK(&lt;条件&gt;)</p>
+<hr>
+<h4 id="sql中的数据类型与模式"><a href="#sql中的数据类型与模式" class="headerlink" title="sql中的数据类型与模式"></a>sql中的数据类型与模式</h4><h5 id="date"><a href="#date" class="headerlink" title="date"></a>date</h5><ul>
+<li>DATE - 格式 YYYY-MM-DD</li>
+<li>DATETIME - 格式: YYYY-MM-DD HH:MM:SS</li>
+<li>TIMESTAMP - 格式: YYYY-MM-DD HH:MM:SS</li>
+<li>YEAR - 格式 YYYY 或 YY</li>
+</ul>
+<p>时间范围<br>DATE– &gt; ‘1000-01-01’ to ‘9999-12-31’.<br>DATETIME –&gt; ‘1000-01-01 00:00:00’ to ‘9999-12-31 23:59:59’.<br>TIMESTAMP – &gt; ‘1970-01-01 00:00:01’ UTC to ‘2038-01-19 03:14:07’ UTC</p>
+<h5 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h5><p>如<code>default null</code></p>
+<h5 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX 索引名称</span><br><span class="line">ON 表名称 (列名称)</span><br></pre></td></tr></table></figure>
+<h5 id="用户定义的类型–独特类型"><a href="#用户定义的类型–独特类型" class="headerlink" title="用户定义的类型–独特类型"></a>用户定义的类型–独特类型</h5><p>用<code>create type</code>来定义新类型</p>
+<p><strong>create type</strong> Dollars <strong>as numeric（ 12， 2 ）final</strong>； </p>
+<p>用户定义类型Dollars订一位总共12位数字的十进制数，其中两位放在十进制小数点后。 </p>
+<p>在此关键字final并不是真的有意义，SQL：1999标准要求的。 </p>
+<p>例： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table department( </span><br><span class="line">dept_name varchar(20), </span><br><span class="line">building varchar(15), </span><br><span class="line">budget *Dollars* );</span><br></pre></td></tr></table></figure>
+<p><strong>drop type</strong>／<strong>alter type</strong>：删除／修改以前创建过的类型。</p>
+<p><strong>create domain 可以定义一个域</strong> 域是可以声明约束的，并且域是可以可以赋值给另一个域，只要基本类型是相同的</p>
+<h5 id="create-table的扩展"><a href="#create-table的扩展" class="headerlink" title="create table的扩展"></a>create table的扩展</h5><p><code>create table temp_instructor like instructor;</code>  创建一个与instructor模式相同的表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table t1 as</span><br><span class="line">(select *</span><br><span class="line">from instructor</span><br><span class="line">where dept_name=&apos;music&apos;)</span><br><span class="line">with data;</span><br></pre></td></tr></table></figure>
+<h5 id="模式、目录与环境-看不懂溜了"><a href="#模式、目录与环境-看不懂溜了" class="headerlink" title="模式、目录与环境(看不懂溜了)"></a>模式、目录与环境(看不懂溜了)</h5><h5 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h5><p>权限列表为  select insert update delete </p>
+<p><strong>grant</strong> &lt; 权限列表 &gt;      //<strong>select  insert  update  delete</strong> </p>
+<p><strong>on</strong> &lt; 关系名或视图名 &gt; </p>
+<p><strong>to</strong> &lt; 用户 /角色列表 &gt;; </p>
+<p>例：授予数据库用户Amit和Satoshi在department关系上的select权限： </p>
+<p><strong>grant select on</strong> department <strong>to</strong> Amit, Satoshi；</p>
+<p>收回revoke </p>
+<p><strong>revoke</strong> &lt; 权限列表 &gt;     //<strong>select  insert  update  delete</strong> </p>
+<p><strong>on</strong> &lt; 关系名或视图名 &gt; </p>
+<p><strong>to</strong> &lt; 用户 /角色列表 &gt;; </p>
+<p>例：收回数据库用户Amit和Satoshi在department关系上的budget属性上的更新权限： </p>
+<p>revoke update ( budget ) on department from Amit, Satoshi；</p>
+<h5 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h5><p>创建角色： <strong>create role</strong> instructor;</p>
+<p>授予权限： </p>
+<p><strong>grant select on</strong> takes </p>
+<p><strong>to</strong> instructor;</p>
+<p>用户或角色的权限： </p>
+<p>所有直接授予用户／角色的权限； </p>
+<p>所有授予给用户／角色所拥有角色的权限。</p>
 
       
 
