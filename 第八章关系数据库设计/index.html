@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://ecnudayun.coding.me">
   <title>第八章关系数据库设计 | 云之学习之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The keyattributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
+  <meta name="description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The key attributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第八章关系数据库设计">
 <meta property="og:url" content="https://ecnudayun.coding.me/第八章关系数据库设计/index.html">
 <meta property="og:site_name" content="云之学习之路">
-<meta property="og:description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The keyattributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
+<meta property="og:description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The key attributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T16:41:42.067Z">
+<meta property="og:updated_time" content="2018-05-02T17:13:22.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八章关系数据库设计">
-<meta name="twitter:description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The keyattributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
+<meta name="twitter:description" content="DDL is 生产力 好的数据库 决定条件很多 键（主键与候选键） The key attributes uniquely identify the tuple. 函数依赖 函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A 若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&amp;gt;β">
   
     <link rel="alternative" href="/atom.xml" title="云之学习之路" type="application/atom+xml">
   
@@ -167,7 +167,7 @@
 <p><strong>好的数据库</strong></p>
 <p>决定条件很多</p>
 <p><strong>键</strong>（主键与候选键）</p>
-<p>The keyattributes uniquely identify the tuple.</p>
+<p>The key attributes uniquely identify the tuple.</p>
 <p><strong>函数依赖</strong></p>
 <p>函数依赖简单地说就是属性集A决定属性集B，则B依赖于属性A</p>
 <p>若对每个元组对t1，t2 t1[α]=t2[α] 都有t1[β]=t2[β] 那么有 α–&gt;β</p>
@@ -186,7 +186,8 @@
 <p>A decompositionis dependency preserving, if</p>
 <p> (F1 U F2 U … U Fn)+ = F+</p>
 <p>第二种算法（看不懂这个操作）</p>
-<p>result = awhile(changes to result) do for each Ri in the decomposition t = (result ∩ Ri)+ ∩ Riresult = result U t</p>
+<p>result = awhile(changes to result) do for each Ri in the decomposition t = (result ∩ Ri)+ ∩ Ri</p>
+<p>result = result U t</p>
 <p>If resultcontains all attributes in b, then the functional dependency a-&gt;b ispreserved</p>
 <p><strong>第一范式</strong></p>
 <p>所有的属性都是原子的就是第一范式</p>
