@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-02T01:24:53.539Z</updated>
+  <updated>2018-05-02T01:48:35.050Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0/"/>
     <id>http://yoursite.com/关系代数/</id>
     <published>2018-05-01T14:31:54.000Z</published>
-    <updated>2018-05-02T01:24:53.539Z</updated>
+    <updated>2018-05-02T01:48:35.050Z</updated>
     
-    <content type="html"><![CDATA[<h5 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h5><p>选择<strong>（Selection）</strong>σ</p><p>投影<strong>（Projection）</strong>Π</p><p>并<strong>（Union）</strong>∪</p><p>集合差<strong>（Difference）</strong>-</p><p>笛卡尔积<strong>（cartesian product）</strong> x</p><p>更名<strong>（rename）</strong>ρ<sub>x</sub></p><a id="more"></a><p>1.选择</p><p>用小写sigma(σ)表示，下标为谓词，括号中为参数关系</p><p>σ<sub>dept_name</sub>=”Physics”(instructor)</p><img src="/关系代数/5.2(1).jpg">]]></content>
+    <content type="html"><![CDATA[<h5 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h5><p>选择<strong>（Selection）</strong>σ</p><p>投影<strong>（Projection）</strong>Π</p><p>并<strong>（Union）</strong>∪</p><p>集合差<strong>（Difference）</strong>-</p><p>笛卡尔积<strong>（cartesian product）</strong> x</p><p>更名<strong>（rename）</strong>ρ<sub>x</sub></p><a id="more"></a><p>1.选择</p><p>用小写sigma(σ)表示，下标为谓词，括号中为参数关系</p><p>σ<sub>dept_name</sub>=”Physics”(instructor)</p><img src="/关系代数/5.2(1).jpg"><p>2.投影</p><p>返回作为参数的关系，但把某些属性排除在外，所有重复行均被去除。用大写pi(Π)表示，下标为在结果中出现的属性，括号中为参数关系。</p><p>投影操作会去掉重复</p><p>3.并运算</p><p>可将两个集合并起来，找出出现在两个集合之一或同时出现在两个集合中的所有元组。用∪表示。</p><p>要满足两个条件才能进行运算</p><p>a. r,s must have the same arity  (same number of attributes)</p><p>b. The attribute domains must be compatible</p><p>4.集合差</p><p>表达式r-s包含所有在r中而不在s中的元组的关系。</p><p>要满足两个条件才能进行运算</p><p>a. r,s must have the same arity  (same number of attributes)</p><p>b. The attribute domains must be compatible</p><p>5.笛卡尔积</p><p>将任意两个关系的信息组合在一起，结果中包含所有可能的元组对。</p><p>由于相同的属性名可能同时出现在r1和r2中，需要一个命名机制来区别这些属性。可采用把属性所来自的关系名称附加到该属性上的方法。</p><p>笛卡尔积运算参数的关系名称必须不同。</p><p>6.更名操作</p><p>给关系代数表达式的结果赋上名字以供引用，用小写rho(ρ)表示。</p><p>更名运算的另一形式：ρx(A1, A2, …, An)(E)。假设关系代数表达式E是n元的，运算返回表达式E的结果，并把名字x赋给它，同时将各属性更名为A1, A2, …, An。</p><p>e.g. 找出大学里的最高工资</p><p>/*步骤1：计算出一个由非最高工资组成的临时关系。</p><p>首先通过更名运算引用其中一个instructor关系以便计算笛卡尔积instructor×instructor，再构造选择运算比较任意两个出现在同一元组中的salary选择较低的元组。通过投影选取instructor.salary列得到非最高工资构成的临时关系*/</p><p>Πinstructor.salary (σinstructor.salary&lt;d.salary(instructor×ρd(instructor)))</p><p>/*步骤2：计算关系Πsalary (instructor)和刚才计算出的非最高工资构成的临时关系的集合差，</p><p>得到结果。*/</p><p>Πsalary (instructor)-Πinstructor.salary (σinstructor.salary&lt;d.salary(instructor×ρd(instructor)))</p><p>更名运算不是必须的，因为可以用<strong>位置标记</strong>隐含地作为关系（或关系代数表达式运算的结果）的属性名，用$1、$2、…指代第一个属性、第二个属性…以此类推。</p><p>e.g. 用位置标记来计算大学里的非最高工资构成的临时关系</p><p>/*在笛卡尔积(instructor×instructor)中，</p><p>$4代表第一个instructor的属性salary，$8代表第二个instructor的属性salary。*/</p><p>Π$4(σ​$4&lt;$8(instructor×instructor))</p><p>如果一个二元运算需要区分其运算对象的两个关系，也可使用为指标及作为关系的名称。E.g. $R1指代第一个作为运算对象的关系，$R2指代第二个关系。</p>]]></content>
     
     <summary type="html">
     
