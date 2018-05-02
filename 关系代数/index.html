@@ -17,7 +17,9 @@
 <meta property="og:description" content="基本运算选择（Selection）σ 投影（Projection）Π 并（Union）∪ 集合差（Difference）- 笛卡尔积（cartesian product） x 更名（rename）ρx">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/关系代数/5.2(1).jpg">
-<meta property="og:updated_time" content="2018-05-02T01:48:35.050Z">
+<meta property="og:image" content="http://yoursite.com/关系代数/5.2(2).jpg">
+<meta property="og:image" content="http://yoursite.com/关系代数/5.2(3).jpg">
+<meta property="og:updated_time" content="2018-05-02T03:31:02.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系代数">
 <meta name="twitter:description" content="基本运算选择（Selection）σ 投影（Projection）Π 并（Union）∪ 集合差（Difference）- 笛卡尔积（cartesian product） x 更名（rename）ρx">
@@ -209,6 +211,34 @@
 <p>$4代表第一个instructor的属性salary，$8代表第二个instructor的属性salary。*/</p>
 <p>Π$4(σ​$4&lt;$8(instructor×instructor))</p>
 <p>如果一个二元运算需要区分其运算对象的两个关系，也可使用为指标及作为关系的名称。E.g. $R1指代第一个作为运算对象的关系，$R2指代第二个关系。</p>
+<h5 id="附加的关系运算"><a href="#附加的关系运算" class="headerlink" title="附加的关系运算"></a>附加的关系运算</h5><p>这些运算都可以被基本的关系代数所替代</p>
+<p><strong>集合交（intersection）运算</strong> (∩) r-(r-s)<br><strong>自然连接（natural join）运算</strong> (⋈)<br>属性名相同的进行合并<br><strong>theta连接（theta join）运算</strong>：是自然连接的扩展。<br>考虑关系r(R)和s(S)，θ是模式R∪S的属性上的谓词。r ⋈<sub>θ</sub> s = σ<sub>θ</sub>(r×s)<br><strong>赋值（assignment）运算</strong> (←) 把右值赋值给左边的临时变量<br><strong>外连接（outer-join）运算</strong>  左外连接（left outer join）(⟕) 右外连接（right outer join）(⟖) 全外链接（full outer join）(⟗)<br><strong>除法（Division operator）</strong><br>R(Sid,Cid)÷S(Cid)=T(Sid)<br>要求上式满足商与除数的笛卡尔积是在R中的<br><img src="/关系代数/5.2(2).jpg"></p>
+<h5 id="拓展的关系代数"><a href="#拓展的关系代数" class="headerlink" title="拓展的关系代数"></a>拓展的关系代数</h5><p><strong>广义投影（generalized-projection）</strong></p>
+<p>通过允许在投影列表使用算术运算和字符串函数等来对投影进行扩展。</p>
+<p>e.g. 查询每个教师的ID、name、dept_name以及每月的工资</p>
+<p>Π<sub>ID, name, dept_name, salary/12</sub>(instructor)</p>
+<p><strong>聚集函数（aggregate function）</strong>：输入值的一个汇集，将单一值作为结果返回。</p>
+<p>通式：</p>
+<p><sub>G1, G2, …, Gn</sub>𝒢<sub> F1(A1), F2(A2), …, Fm(Am)</sub>(E)</p>
+<p>e.g. 分别查询a. 每个系教师的平均工资 b. 所有教师的平均工资</p>
+<p><sub>dept_name</sub> 𝒢 <sub>average(salary)</sub>(instructor)</p>
+<p>𝒢 <sub>average(salary)</sub>(instructor)</p>
+<img src="/关系代数/5.2(3).jpg">
+<h5 id="Modification-of-the-Database"><a href="#Modification-of-the-Database" class="headerlink" title="Modification of the Database"></a>Modification of the Database</h5><p><strong>Deletion</strong></p>
+<p>Can delete only whole tuples;cannot delete values on only particular attributes</p>
+<p>A deletion is expressed in relational algebra by:</p>
+<p>r←r-E</p>
+<p>where r is a relation and E is a relational algebra query.</p>
+<p><strong>Insertion</strong></p>
+<p>与上面类似</p>
+<p>r←r∪E</p>
+<p><strong>Updating</strong></p>
+<p>A mechanism to change a value in a tuple without charging all values in the tuple</p>
+<p>Use the generalized projection operator to do this task</p>
+<p>r←Π<sub>F1,F2…Fn</sub>(R)</p>
+<p>Each Fi is either </p>
+<p>the ith attribute of r,if the ith attribute is not updated, or,</p>
+<p>if the attribute is to be updated Fi  is an expression, involving only constants and the attributes of r,which gives the new value for the attribute</p>
 
       
 
