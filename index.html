@@ -143,6 +143,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关系模式介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/关系模式介绍/">关系模式介绍</a>
+    </h1>
+  
+
+        
+        <a href="/关系模式介绍/" class="archive-article-date">
+  	<time datetime="2018-05-02T10:48:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本章的类容偏概览，当时学的时候理解的很差，后面的知识学了一些之后再看书好很多</p>
+<h5 id="relation-schema-关系模式"><a href="#relation-schema-关系模式" class="headerlink" title="relation schema 关系模式"></a>relation schema 关系模式</h5><p>一般来说关系模式是 由属性序列及各属性对应域组成</p>
+<h5 id="superkey"><a href="#superkey" class="headerlink" title="superkey"></a>superkey</h5><p>唯一的标识一个元组</p>
+<h5 id="候选码"><a href="#候选码" class="headerlink" title="候选码"></a>候选码</h5><p>最小的超码 可以有很多个</p>
+<h5 id="主码"><a href="#主码" class="headerlink" title="主码"></a>主码</h5><p>主要的候选码</p>
+<h5 id="码"><a href="#码" class="headerlink" title="码"></a>码</h5><p>它包括超码，候选码，主码。</p>
+<h5 id="关系查询语言"><a href="#关系查询语言" class="headerlink" title="关系查询语言"></a>关系查询语言</h5><p>过程化 非过程化</p>
+<p>关系代数是过程化的</p>
+<p>元组关系演算和域关系演算是非过程化的（这个貌似没讲也没看）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关系代数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -444,86 +522,6 @@
 
 
   
-    <article id="post-数据库第三章复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/数据库第三章复习/">数据库第三章复习</a>
-    </h1>
-  
-
-        
-        <a href="/数据库第三章复习/" class="archive-article-date">
-  	<time datetime="2018-04-24T12:49:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="第三章-sql-对于自己不熟悉的部分的复习"><a href="#第三章-sql-对于自己不熟悉的部分的复习" class="headerlink" title="第三章  sql 对于自己不熟悉的部分的复习"></a>第三章  sql 对于自己不熟悉的部分的复习</h4><h5 id="聚集函数-avg，min，max，sum，count"><a href="#聚集函数-avg，min，max，sum，count" class="headerlink" title="聚集函数 avg，min，max，sum，count"></a>聚集函数 avg，min，max，sum，count</h5><ol>
-<li>count函数是可以使用count（distinct 属性名）的</li>
-<li>任何出现在group by中的属性，如果出现在select语句中，只能出现在聚集函数中（主要是数量上要相等，在mysql中实测不一定）</li>
-<li>having子句在分组之后作用，因此可以在having中使用聚集函数</li>
-<li>除了count（*），其他的聚集函数都是忽略null值的</li>
-</ol>
-<h5 id="exist结构用法："><a href="#exist结构用法：" class="headerlink" title="exist结构用法："></a>exist结构用法：</h5><p>后面非空的时候返回true</p>
-<h5 id="unique结构："><a href="#unique结构：" class="headerlink" title="unique结构："></a>unique结构：</h5><p>不常用，查询结果没有重复的元组返回true</p>
-<h5 id="with子句："><a href="#with子句：" class="headerlink" title="with子句："></a>with子句：</h5>
-        
-          <a class="article-more-a" href="/数据库第三章复习/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -613,11 +611,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
               </li>
              
               <li class="article-tag-list-item">

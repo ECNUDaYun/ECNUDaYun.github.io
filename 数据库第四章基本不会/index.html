@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="云之学习之路">
 <meta property="og:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T08:58:28.690Z">
+<meta property="og:updated_time" content="2018-05-02T11:00:18.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库第四章基本不会....">
 <meta name="twitter:description" content="中级sql内连接第一种方式A join B using（P1，P2...）要求A，B都要有相同的属性名P1,P2….. 第二种方式A join B on PP和where语句的差不多的写法 这两种都是外连接">
@@ -188,7 +188,7 @@
 <p>not null ， unique ， check子句</p>
 <p><code>unique (Aj1,Aj2,Aj3,...,Ajn)</code> 表示Aj1,Aj2,Aj3,…,Ajn形成了一个候选码</p>
 <p><code>check(P)</code>  P是一个谓词</p>
-<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**create table** section(</span><br><span class="line">.....</span><br><span class="line">check (semester **in** (&apos;Fall&apos;,&apos;Spring&apos;,&apos;Winter&apos;,&apos;Summer&apos;) ) );</span><br></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create table section(</span><br><span class="line">.....</span><br><span class="line">check (semester **in** (&apos;Fall&apos;,&apos;Spring&apos;,&apos;Winter&apos;,&apos;Summer&apos;) ) );</span><br></pre></td></tr></table></figure></p>
 <p>foreign key</p>
 <p><code>foreign key(dept_name)reference department</code> 建立外键</p>
 <p>参照完整性约束：dept_name 的值必须是department关系中主码对应的属性有的</p>
@@ -227,7 +227,7 @@
 <p><strong>create domain 可以定义一个域</strong> 域是可以声明约束的，并且域是可以可以赋值给另一个域，只要基本类型是相同的</p>
 <h5 id="create-table的扩展"><a href="#create-table的扩展" class="headerlink" title="create table的扩展"></a>create table的扩展</h5><p><code>create table temp_instructor like instructor;</code>  创建一个与instructor模式相同的表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table t1 as</span><br><span class="line">(select *</span><br><span class="line">from instructor</span><br><span class="line">where dept_name=&apos;music&apos;)</span><br><span class="line">with data;</span><br></pre></td></tr></table></figure>
-<h5 id="模式、目录与环境-看不懂溜了"><a href="#模式、目录与环境-看不懂溜了" class="headerlink" title="模式、目录与环境(看不懂溜了)"></a>模式、目录与环境(看不懂溜了)</h5><h5 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h5><p>权限列表为  select insert update delete </p>
+<h5 id="模式、目录与环境-看不懂溜了"><a href="#模式、目录与环境-看不懂溜了" class="headerlink" title="模式、目录与环境(看不懂溜了)"></a>模式、目录与环境(看不懂溜了)</h5><h5 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h5><p>权限列表为  select insert update delete  all privileges</p>
 <p><strong>grant</strong> &lt; 权限列表 &gt;      //<strong>select  insert  update  delete</strong> </p>
 <p><strong>on</strong> &lt; 关系名或视图名 &gt; </p>
 <p><strong>to</strong> &lt; 用户 /角色列表 &gt;; </p>
@@ -449,11 +449,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">selvlet</a>
               </li>
              
               <li class="article-tag-list-item">
