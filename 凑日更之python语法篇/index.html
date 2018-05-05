@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://ecnudayun.coding.me">
   <title>凑日更之python语法篇 | 云之学习之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
+  <meta name="description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 写了一会儿之后发现有点长。。。。。 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="凑日更之python语法篇">
 <meta property="og:url" content="https://ecnudayun.coding.me/凑日更之python语法篇/index.html">
 <meta property="og:site_name" content="云之学习之路">
-<meta property="og:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
+<meta property="og:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 写了一会儿之后发现有点长。。。。。 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-05T13:42:53.734Z">
+<meta property="og:updated_time" content="2018-05-05T15:32:20.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="凑日更之python语法篇">
-<meta name="twitter:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
+<meta name="twitter:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 写了一会儿之后发现有点长。。。。。 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
   
     <link rel="alternative" href="/atom.xml" title="云之学习之路" type="application/atom+xml">
   
@@ -165,6 +165,7 @@
       
         <p>本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写</p>
 <p>适合 <del>所有人</del> 本来就知道这些的人观看</p>
+<p>写了一会儿之后发现有点长。。。。。</p>
 <h4 id="基本规范"><a href="#基本规范" class="headerlink" title="基本规范"></a>基本规范</h4><h5 id="基础编码编码"><a href="#基础编码编码" class="headerlink" title="基础编码编码"></a>基础编码编码</h5><p>默认情况下，Python 3 源码文件以 <strong>UTF-8</strong> 编码</p>
 <h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p><code>#</code>用来注释</p>
 <p>多行的注释可以选择多个<code>#</code>或者</p>
@@ -234,6 +235,8 @@
 <p>我们可以看到只要是可迭代的就可以实现list()函数，实现的效果就是用for遍历出来，然后再打个包价格[]一样</p>
 <p>set() tuple()都是一样的，他们的效果都是差不多的，set操作之后可能顺序不太一样，因为set是无序的</p>
 <p>他们都可以对<strong>可迭代对象</strong>进行操作</p>
+<p>dict()的操作显然就不太一样了，先把官方文档的内容放这里凑字数</p>
+<p>dict() -&gt; new empty dictionary<br> |  dict(mapping) -&gt; new dictionary initialized from a mapping object’s<br> |      (key, value) pairs<br> |  dict(iterable) -&gt; new dictionary initialized as if via:<br> |      d = {}<br> |      for k, v in iterable:<br> |          d[k] = v<br> |  dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs<br> |      in the keyword argument list.  For example:  dict(one=1, two=2)</p>
 <p>4.str() 把所有的的都加上“”，与list()不同，它对参数不进行任何处理直接加””，简单粗暴，注意对本来是字符串的它不处理</p>
 <p>repr()更粗暴，连string类的都加引号</p>
 <p>5.tuple()和list()做的是差不多的事</p>
@@ -249,6 +252,10 @@
 <p>列表实现了自己独特的<u>运算符重载</u> ，在加字典的时候加的是key值</p>
 <p>其实很简单，肉眼能看出来，他们仿佛就是使用了下list()函数之后再相加（当然我是猜的，我没看具体实现方式）</p>
 <p>7.<code>*</code> 相当于自己加起来</p>
+<p>8.min()和max()函数，默认的使用方式就是传进去的参数是可迭代的对象，然后对象里面的对象是可以比较大小的 9.    .count()方法，除了集合和字典没有，其他的使用时一样的</p>
+<p>10 .      .pop()方法，默认删除最后一个 string没有这个方法， 集合的pop是不确定是去哪个的，字典的话要指定key作为参数</p>
+<p>b.pop(a)有参数a的时候其实相当于删除b[a]</p>
+<hr>
 <p>相同点差不多就这几点吧</p>
 <p>下面的几点相似度稍微低一点</p>
 <h5 id="support-indexing-（就是用中括号来制定索引）"><a href="#support-indexing-（就是用中括号来制定索引）" class="headerlink" title="support indexing （就是用中括号来制定索引）"></a>support indexing （就是用中括号来制定索引）</h5><p>实测结果，字符串，元组，列表， 字典都有</p>
@@ -271,7 +278,9 @@
 <p>1.在最初赋值阶段，变量的id与真正写成“abc”和[1,2,3]的id其实是不同的</p>
 <p>2.但是他们用<code>=</code>进行赋值给其他的变量的时候，其实是把id给人家了，string不可变，所以在改值的时候是用<code>=</code>重新给值了，所以改后的id变了，所以值和原来的不一样；</p>
 <p>list是可变的，对象没变的，操作的是同一个对象，所以id号没变</p>
+<p><strong>另</strong>  list，set，dict都有.copy()方法，返回的对象的id号不同，与使用a[:]的效果相同，id号是不一样的</p>
 <h5 id="修改对象"><a href="#修改对象" class="headerlink" title="修改对象"></a>修改对象</h5><p>string和tuple就只能=进行复制来修改了</p>
+<p>后面的增删改就不考虑他们了</p>
 <p><strong>增加</strong>：</p>
 <p><strong>list</strong>通方法<code>append(obj)</code></p>
 <p>注意这个里面是放的object，直接把对象扔到list里面</p>
@@ -279,6 +288,35 @@
 <p><strong>set</strong>通过<code>add()</code>方法，加的结果是去重的</p>
 <p>字典的比较不同，看下面的例子</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&apos;c&apos;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>dict</strong> 可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e=&#123;1:&quot;a&quot;,2:&quot;b&quot;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&quot;c&quot;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>删除</strong>：</p>
+<p> .pop()方法，默认删除最后一个 string没有这个方法， 集合的pop是不确定是去哪个的，字典的话要指定key作为参数</p>
+<p>b.pop(a)有参数a的时候其实相当于删除b[a]</p>
+<p>.remove()方法</p>
+<p>必须要有参数，参数为指定对象，没有的话抛出异常</p>
+<p>只有set，list有</p>
+<p>pop和remove的主要差别就是一个是索引号指定，一个是object指定</p>
+<p><strong>del</strong> 这是个很厉害的武器,不仅可以对变量操作</p>
+<p>还</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;abc&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; del e[3]</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p>直接找到索引删掉，和pop貌似差不多</p>
+<p><strong>改：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 9), &apos;a&apos;, &apos;s&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[2:3]=(1,2,&quot;2&quot;)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 9), &apos;a&apos;, 1, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[2:3]=range(9,11)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 9), &apos;a&apos;, 9, 10, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[0]=range(4)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 4), &apos;a&apos;, 9, 10, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[0:1]=range(3)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[0, 1, 2, &apos;a&apos;, 9, 10, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br></pre></td></tr></table></figure>
+<p>可见，[0]与[0:1]是不一样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c.clear()</span><br><span class="line">&gt;&gt;&gt; c[0]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#154&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    c[0]</span><br><span class="line">IndexError: list index out of range</span><br><span class="line">&gt;&gt;&gt; c[0:1]=range(3)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[0, 1, 2]</span><br></pre></td></tr></table></figure>
+<p>只有list可以进行上面的这种操作</p>
+<p>字典的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&quot;abc&quot;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;abc&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p>改的话，其实可以通过 删 加完成</p>
+<p><strong>查</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[2, &apos;bcd&apos;]</span><br><span class="line">&gt;&gt;&gt; c.index(2)</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p>.index()方法</p>
+<p>string，tuple，list有，参数为对象，返回序列号，没有的话会抛出异常</p>
+<p>还有另一种</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[2, &apos;bcd&apos;]</span><br><span class="line">&gt;&gt;&gt; &apos;bcd&apos; in c</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; 1 in e</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>对字典来说，看的是key在不在</p>
+<p>差不多了，先这样，先想到的主要就是这些，其他的改日再写在下一篇博客里</p>
 
       
 
