@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="云之学习之路">
 <meta property="og:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-05T08:28:51.518Z">
+<meta property="og:updated_time" content="2018-05-05T13:42:53.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="凑日更之python语法篇">
 <meta name="twitter:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
@@ -216,7 +216,7 @@
 <p>看下面代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d=&#123;&apos;python&apos;:1,&apos;php&apos;:2,&apos;java&apos;:3&#125;</span><br><span class="line">&gt;&gt;&gt; d.keys()</span><br><span class="line">dict_keys([&apos;python&apos;, &apos;php&apos;, &apos;java&apos;])</span><br><span class="line">&gt;&gt;&gt; d.values()</span><br><span class="line">dict_values([1, 2, 3])</span><br><span class="line">&gt;&gt;&gt; d.items()</span><br><span class="line">dict_items([(&apos;python&apos;, 1), (&apos;php&apos;, 2), (&apos;java&apos;, 3)])</span><br></pre></td></tr></table></figure>
 <p>因为字典中有两个值，一个key值，一个是value值，所以在遍历的时候会有些不太一样的地方，直接遍历得到的是遍历的是key</p>
-<p>自定义的遍历，可以对d.keys()和d.values()和d.items() （这几个返回的都是可迭代对象，和list的相似度比较高，但是我试了下，他们不能进行下标访问）进行遍历</p>
+<p>自定义的遍历，可以对d.keys()和d.values()和d.items() （这几个返回的都是<strong>可迭代对象</strong>，和list的相似度比较高，但是我试了下，他们不能进行下标访问）进行遍历</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#for key in d.keys():</span><br><span class="line">#for value in d.values():</span><br><span class="line">#for k , v in d.items():</span><br></pre></td></tr></table></figure>
 <p>注：（下面这段不是很必要的操作）</p>
 <p>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。返回一个<strong>枚举对象</strong>而且这个对象是可以迭代的</p>
@@ -225,13 +225,18 @@
 <p>相同点：</p>
 <p>1.他们都是可迭代对象具体见上面一部分</p>
 <p>2.len()这个函数可以返回字符串、列表、字典、元组、集合等的长度</p>
+<p>官方文档令人信服：</p>
+<blockquote>
+<p>Return the length (the number of items) of an object. The argument may be a<br>sequence (such as a string, bytes, tuple, list, or range) or a collection (such<br>as a dictionary, set, or frozen set).</p>
+</blockquote>
 <p>3.list()实测可以对这几种数据结构进行转换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list(1)</span><br><span class="line">	</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#307&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    list(1)</span><br><span class="line">TypeError: &apos;int&apos; object is not iterable</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list(1)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#307&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    list(1)</span><br><span class="line">TypeError: &apos;int&apos; object is not iterable</span><br></pre></td></tr></table></figure>
 <p>我们可以看到只要是可迭代的就可以实现list()函数，实现的效果就是用for遍历出来，然后再打个包价格[]一样</p>
+<p>set() tuple()都是一样的，他们的效果都是差不多的，set操作之后可能顺序不太一样，因为set是无序的</p>
+<p>他们都可以对<strong>可迭代对象</strong>进行操作</p>
 <p>4.str() 把所有的的都加上“”，与list()不同，它对参数不进行任何处理直接加””，简单粗暴，注意对本来是字符串的它不处理</p>
 <p>repr()更粗暴，连string类的都加引号</p>
-<p>5.tuple()这个操作不适用于全部，放在一起只是我开始的时候没注意到他们不一样</p>
-<p>tuple不能对集合操作</p>
+<p>5.tuple()和list()做的是差不多的事</p>
 <p>对字典操作的时返回的是key值</p>
 <p>对字符串返回的是分开的一个个字符串与list的结果相似</p>
 <p>6.<code>+</code> 操作要求相同的数据结构</p>
