@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="云之学习之路">
 <meta property="og:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-05T03:53:53.660Z">
+<meta property="og:updated_time" content="2018-05-05T08:28:51.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="凑日更之python语法篇">
 <meta name="twitter:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
@@ -218,6 +218,62 @@
 <p>因为字典中有两个值，一个key值，一个是value值，所以在遍历的时候会有些不太一样的地方，直接遍历得到的是遍历的是key</p>
 <p>自定义的遍历，可以对d.keys()和d.values()和d.items() （这几个返回的都是可迭代对象，和list的相似度比较高，但是我试了下，他们不能进行下标访问）进行遍历</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#for key in d.keys():</span><br><span class="line">#for value in d.values():</span><br><span class="line">#for k , v in d.items():</span><br></pre></td></tr></table></figure>
+<p>注：（下面这段不是很必要的操作）</p>
+<p>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。返回一个<strong>枚举对象</strong>而且这个对象是可以迭代的</p>
+<h4 id="几个自带的常用的数据结构"><a href="#几个自带的常用的数据结构" class="headerlink" title="几个自带的常用的数据结构"></a>几个自带的常用的数据结构</h4><p>字符串，元组，列表，字典，集合</p>
+<p>但是我并不想按顺序写，毕竟看这个的人都是本来就会的人/滑稽</p>
+<p>相同点：</p>
+<p>1.他们都是可迭代对象具体见上面一部分</p>
+<p>2.len()这个函数可以返回字符串、列表、字典、元组、集合等的长度</p>
+<p>3.list()实测可以对这几种数据结构进行转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list(1)</span><br><span class="line">	</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#307&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    list(1)</span><br><span class="line">TypeError: &apos;int&apos; object is not iterable</span><br></pre></td></tr></table></figure>
+<p>我们可以看到只要是可迭代的就可以实现list()函数，实现的效果就是用for遍历出来，然后再打个包价格[]一样</p>
+<p>4.str() 把所有的的都加上“”，与list()不同，它对参数不进行任何处理直接加””，简单粗暴，注意对本来是字符串的它不处理</p>
+<p>repr()更粗暴，连string类的都加引号</p>
+<p>5.tuple()这个操作不适用于全部，放在一起只是我开始的时候没注意到他们不一样</p>
+<p>tuple不能对集合操作</p>
+<p>对字典操作的时返回的是key值</p>
+<p>对字符串返回的是分开的一个个字符串与list的结果相似</p>
+<p>6.<code>+</code> 操作要求相同的数据结构</p>
+<p> <code>+=</code> 居然不一样，还好我试了一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;abc&quot;</span><br><span class="line">&gt;&gt;&gt; b=(1,2,3)</span><br><span class="line">&gt;&gt;&gt; c=[4,5,6]</span><br><span class="line">&gt;&gt;&gt; d=&#123;1,2,3&#125;</span><br><span class="line">&gt;&gt;&gt; e=&#123;1:&quot;a&quot;,2:&quot;b&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>经过测试</p>
+<p>任意两个相加是报错的</p>
+<p>但是！！！！(还好<strong>意外只有一个)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c+=a</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[4, 5, 6, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line">&gt;&gt;&gt; c+=b</span><br><span class="line">&gt;&gt;&gt; c+=d</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[4, 5, 6, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, 1, 2, 3, 1, 2, 3]</span><br><span class="line">&gt;&gt;&gt; c+=e</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[4, 5, 6, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, 1, 2, 3, 1, 2, 3, 1, 2]</span><br></pre></td></tr></table></figure>
+<p>列表实现了自己独特的<u>运算符重载</u> ，在加字典的时候加的是key值</p>
+<p>其实很简单，肉眼能看出来，他们仿佛就是使用了下list()函数之后再相加（当然我是猜的，我没看具体实现方式）</p>
+<p>7.<code>*</code> 相当于自己加起来</p>
+<p>相同点差不多就这几点吧</p>
+<p>下面的几点相似度稍微低一点</p>
+<h5 id="support-indexing-（就是用中括号来制定索引）"><a href="#support-indexing-（就是用中括号来制定索引）" class="headerlink" title="support indexing （就是用中括号来制定索引）"></a>support indexing （就是用中括号来制定索引）</h5><p>实测结果，字符串，元组，列表， 字典都有</p>
+<p>其中，string，tuple，list的用法都是相同的</p>
+<p>以list的例子来表示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list=[&quot;abc&quot;,234,&#123;2,3&#125;]</span><br><span class="line">&gt;&gt;&gt; list</span><br><span class="line">[&apos;abc&apos;, 234, &#123;2, 3&#125;]</span><br><span class="line">&gt;&gt;&gt; list[]</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">&gt;&gt;&gt; list[:]</span><br><span class="line">[&apos;abc&apos;, 234, &#123;2, 3&#125;]</span><br><span class="line">&gt;&gt;&gt; list[::2]</span><br><span class="line">[&apos;abc&apos;, &#123;2, 3&#125;]</span><br></pre></td></tr></table></figure>
+<p>字典的话是使用hash的方式来寻值的</p>
+<p>例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d</span><br><span class="line">&#123;&apos;python&apos;: 1, &apos;php&apos;: 2, &apos;java&apos;: 3&#125;</span><br><span class="line">&gt;&gt;&gt; d[:]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#109&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    d[:]</span><br><span class="line">TypeError: unhashable type: &apos;slice&apos;</span><br><span class="line">&gt;&gt;&gt; d[1]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#110&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    d[1]</span><br><span class="line">KeyError: 1</span><br><span class="line">&gt;&gt;&gt; d[&quot;python&quot;]</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h5 id="id号"><a href="#id号" class="headerlink" title="id号"></a>id号</h5><p>string和元组内容是不可变的</p>
+<p>他们两个的所有的方法是不改变对象本身的</p>
+<p>在id号这件事上我们区别对待</p>
+<p>取string和list进行对比</p>
+<p>string</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s=&quot;abcd&quot;</span><br><span class="line">&gt;&gt;&gt; s1=s</span><br><span class="line">&gt;&gt;&gt; id(s)==id(s1)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; s+=&quot;d&quot;</span><br><span class="line">&gt;&gt;&gt; id(s)==id(s1)</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+<p>list</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; id([1,2,3])</span><br><span class="line">58631072</span><br><span class="line">&gt;&gt;&gt; l=[1,2,3]</span><br><span class="line">&gt;&gt;&gt; id(l)</span><br><span class="line">58630992</span><br><span class="line">&gt;&gt;&gt; l1=l</span><br><span class="line">&gt;&gt;&gt; id(l)==id(l1)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; l.append(4)</span><br><span class="line">&gt;&gt;&gt; id(l)</span><br><span class="line">58630992</span><br><span class="line">&gt;&gt;&gt; id(l1)</span><br><span class="line">58630992</span><br><span class="line">&gt;&gt;&gt; l1</span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+<p>具体这是怎么实现的先不管</p>
+<p>我们可以从现象观察到</p>
+<p>1.在最初赋值阶段，变量的id与真正写成“abc”和[1,2,3]的id其实是不同的</p>
+<p>2.但是他们用<code>=</code>进行赋值给其他的变量的时候，其实是把id给人家了，string不可变，所以在改值的时候是用<code>=</code>重新给值了，所以改后的id变了，所以值和原来的不一样；</p>
+<p>list是可变的，对象没变的，操作的是同一个对象，所以id号没变</p>
+<h5 id="修改对象"><a href="#修改对象" class="headerlink" title="修改对象"></a>修改对象</h5><p>string和tuple就只能=进行复制来修改了</p>
+<p><strong>增加</strong>：</p>
+<p><strong>list</strong>通方法<code>append(obj)</code></p>
+<p>注意这个里面是放的object，直接把对象扔到list里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c=[1,2]</span><br><span class="line">&gt;&gt;&gt; c.append(range(0,4))</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[1, 2, range(0, 4)]</span><br></pre></td></tr></table></figure>
+<p><strong>set</strong>通过<code>add()</code>方法，加的结果是去重的</p>
+<p>字典的比较不同，看下面的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&apos;c&apos;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br></pre></td></tr></table></figure>
 
       
 
