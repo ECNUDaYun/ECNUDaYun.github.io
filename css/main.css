@@ -437,6 +437,16 @@ td {
 html,
 body {
   height: 100%;
+  background: #faf0e6;
+  background-color: #faf0e6;
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: auto auto;
 }
 .container {
   position: relative;
@@ -1828,7 +1838,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #322ed7;
+  background: #ffb878;
 }
 .links-of-blogroll {
   font-size: 13px;
