@@ -1,1 +1,846 @@
-<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0"><link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"6.2.0",sidebar:{position:"right",display:"hide",offset:12,b2t:!1,scrollpercent:!0,onmobile:!1},fancybox:!1,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="本文为菜鸡学习笔记直接上代码吧，参考的菜鸟学习注意要把mysql-connector-java-5.1.38-bin.jar放在WEB-INF下新建一个lib存放servle 部分如下："><meta name="keywords" content="selvlet"><meta property="og:type" content="article"><meta property="og:title" content="servlet通过jdbc访问数据库"><meta property="og:url" content="https://ecnudayun.coding.me/servlet通过jdbc连接数据库/index.html"><meta property="og:site_name" content="云之学习之路"><meta property="og:description" content="本文为菜鸡学习笔记直接上代码吧，参考的菜鸟学习注意要把mysql-connector-java-5.1.38-bin.jar放在WEB-INF下新建一个lib存放servle 部分如下："><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2018-04-23T15:31:49.704Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="servlet通过jdbc访问数据库"><meta name="twitter:description" content="本文为菜鸡学习笔记直接上代码吧，参考的菜鸟学习注意要把mysql-connector-java-5.1.38-bin.jar放在WEB-INF下新建一个lib存放servle 部分如下："><link rel="alternate" href="/atom.xml" title="云之学习之路" type="application/atom+xml"><link rel="canonical" href="https://ecnudayun.coding.me/servlet通过jdbc连接数据库/"><script type="text/javascript" id="page.configurations">CONFIG.page={sidebar:""}</script><title>servlet通过jdbc访问数据库 | 云之学习之路</title><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?11b88116a3b5928e12e29b8a809479de";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><noscript><style type="text/css">.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">云之学习之路</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">追寻着丢失的气球...</p></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://ecnudayun.coding.me/servlet通过jdbc连接数据库/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Da yun"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="云之学习之路"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">servlet通过jdbc访问数据库</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-04-22 20:39:00" itemprop="dateCreated datePublished" datetime="2018-04-22T20:39:00+08:00">2018-04-22</time> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">更新于</span> <time title="修改时间：2018-04-23 23:31:49" itemprop="dateModified" datetime="2018-04-23T23:31:49+08:00">2018-04-23</time></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <a href="/servlet通过jdbc连接数据库/#comments" itemprop="discussionUrl"><span class="post-meta-item-text">评论数：</span><span class="post-comments-count gitment-comments-count" data-xid="/servlet通过jdbc连接数据库/" itemprop="commentsCount"></span></a></span></div></header><div class="post-body" itemprop="articleBody"><h1 id="本文为菜鸡学习笔记"><a href="#本文为菜鸡学习笔记" class="headerlink" title="本文为菜鸡学习笔记"></a>本文为菜鸡学习笔记</h1><p>直接上代码吧，参考的菜鸟学习<br>注意要把<br>mysql-connector-java-5.1.38-bin.jar<br>放在WEB-INF下新建一个lib存放<br>servle 部分如下：<br><a id="more"></a><br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mypack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Servlet implementation class DatabaseAccess</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/DatabaseAccess"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletForJDBC</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="comment">// JDBC 驱动名及数据库 URL</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String JDBC_DRIVER = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String DB_URL = <span class="string">"jdbc:mysql://localhost:3306/数据库名称"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 数据库的用户名与密码，需要根据自己的设置</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String USER = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String PASS = <span class="string">""</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        Connection conn = <span class="keyword">null</span>;</span><br><span class="line">        Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 设置响应内容类型</span></span><br><span class="line">        response.setContentType(<span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">        PrintWriter out = response.getWriter();</span><br><span class="line">        String title = <span class="string">"Servlet Mysql 测试"</span>;</span><br><span class="line">        String docType = <span class="string">"&lt;!DOCTYPE html&gt;\n"</span>;</span><br><span class="line">        out.println(docType +</span><br><span class="line">                <span class="string">"&lt;html&gt;\n"</span> +</span><br><span class="line">                <span class="string">"&lt;head&gt;&lt;title&gt;"</span> + title + <span class="string">"&lt;/title&gt;&lt;/head&gt;\n"</span> +</span><br><span class="line">                <span class="string">"&lt;body bgcolor=\"#f0f0f0\"&gt;\n"</span> +</span><br><span class="line">                <span class="string">"&lt;h1 align=\"center\"&gt;"</span> + title + <span class="string">"&lt;/h1&gt;\n"</span>);</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">// 注册 JDBC 驱动器</span></span><br><span class="line">            Class.forName(JDBC_DRIVER);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 打开一个连接</span></span><br><span class="line">            conn = DriverManager.getConnection(DB_URL,USER,PASS);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 执行 SQL 查询</span></span><br><span class="line">            stmt = conn.createStatement();</span><br><span class="line">            String sql;</span><br><span class="line">            sql = <span class="string">"查询语句"</span>;</span><br><span class="line">            ResultSet rs = stmt.executeQuery(sql);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 展开结果集数据库</span></span><br><span class="line">            <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">                <span class="comment">// 通过字段检索</span></span><br><span class="line">                <span class="keyword">int</span> id  = rs.getInt(<span class="string">"id"</span>);</span><br><span class="line">                String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">                String age = rs.getString(<span class="string">"age"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 输出数据</span></span><br><span class="line">                out.println(<span class="string">"ID: "</span> + id);</span><br><span class="line">                out.println(<span class="string">", 名称: "</span> + name);</span><br><span class="line">                out.println(<span class="string">", 年龄："</span> + age);</span><br><span class="line">                out.println(<span class="string">"&lt;br /&gt;"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            out.println(<span class="string">"&lt;/body&gt;&lt;/html&gt;"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 完成后关闭</span></span><br><span class="line">            rs.close();</span><br><span class="line">            stmt.close();</span><br><span class="line">            conn.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span>(SQLException se) &#123;</span><br><span class="line">            <span class="comment">// 处理 JDBC 错误</span></span><br><span class="line">            se.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            <span class="comment">// 处理 Class.forName 错误</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="comment">// 最后是用于关闭资源的块</span></span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(stmt!=<span class="keyword">null</span>)</span><br><span class="line">                    stmt.close();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(SQLException se2)&#123;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(conn!=<span class="keyword">null</span>)</span><br><span class="line">                    conn.close();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(SQLException se)&#123;</span><br><span class="line">                se.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>这样就完成了连接jdbc并且查询的功能的servlet部分<br>然后配置好xml<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;JDBC&lt;/servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;mypack.ServletForJDBC&lt;/servlet-class&gt;</span><br><span class="line">    &lt;/servlet&gt;</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;JDBC&lt;/servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/JDBC&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure><p></p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/selvlet/" rel="tag"><i class="fa fa-tag"></i> selvlet</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/Blog建设/" rel="next" title="blog建设"><i class="fa fa-chevron-left"></i> blog建设</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/jdbc插入数据/" rel="prev" title="jdbc插入数据">jdbc插入数据<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div><div id="gitment-container" style="display:none"></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><p class="site-author-name" itemprop="name">Da yun</p><p class="site-description motion-element" itemprop="description">一只菜鸡的前行之路</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">11</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">4</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/ECNUDaYun" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本文为菜鸡学习笔记"><span class="nav-number">1.</span> <span class="nav-text">本文为菜鸡学习笔记</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2018</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Da yun</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script><link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css"><script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script><script type="text/javascript">function renderGitment(){new Gitmint({id:"1524400740000",owner:"ECNUDaYun",repo:"gitment",lang:navigator.language||navigator.systemLanguage||navigator.userLanguage,oauth:{client_secret:"6f74d55e00a2b7283ee6198314bb71cd2abd6f84",client_id:"83ef681564fda66bc221"}}).render("gitment-container")}function showGitment(){document.getElementById("gitment-display-button").style.display="none",document.getElementById("gitment-container").style.display="block",renderGitment()}</script><script type="text/javascript" src="/js/src/clicklove.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",model:{jsonPath:"/live2dw/assets/koharu.model.json"},display:{position:"right",width:90,height:180},mobile:{show:!0,scale:.2},react:{opacityDefault:.9}})</script></body></html>
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.2.0',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文为菜鸡学习笔记直接上代码吧，参考的菜鸟学习注意要把mysql-connector-java-5.1.38-bin.jar放在WEB-INF下新建一个lib存放servle 部分如下：">
+<meta name="keywords" content="selvlet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="servlet通过jdbc访问数据库">
+<meta property="og:url" content="https://ecnudayun.coding.me/servlet通过jdbc连接数据库/index.html">
+<meta property="og:site_name" content="云之学习之路">
+<meta property="og:description" content="本文为菜鸡学习笔记直接上代码吧，参考的菜鸟学习注意要把mysql-connector-java-5.1.38-bin.jar放在WEB-INF下新建一个lib存放servle 部分如下：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-23T15:31:49.704Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="servlet通过jdbc访问数据库">
+<meta name="twitter:description" content="本文为菜鸡学习笔记直接上代码吧，参考的菜鸟学习注意要把mysql-connector-java-5.1.38-bin.jar放在WEB-INF下新建一个lib存放servle 部分如下：">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="云之学习之路" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://ecnudayun.coding.me/servlet通过jdbc连接数据库/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>servlet通过jdbc访问数据库 | 云之学习之路</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?11b88116a3b5928e12e29b8a809479de";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云之学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">追寻着丢失的气球...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ecnudayun.coding.me/servlet通过jdbc连接数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da yun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云之学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">servlet通过jdbc访问数据库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-22 20:39:00" itemprop="dateCreated datePublished" datetime="2018-04-22T20:39:00+08:00">2018-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-23 23:31:49" itemprop="dateModified" datetime="2018-04-23T23:31:49+08:00">2018-04-23</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/servlet通过jdbc连接数据库/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/servlet通过jdbc连接数据库/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="本文为菜鸡学习笔记"><a href="#本文为菜鸡学习笔记" class="headerlink" title="本文为菜鸡学习笔记"></a>本文为菜鸡学习笔记</h1><p>直接上代码吧，参考的菜鸟学习<br>注意要把<br>mysql-connector-java-5.1.38-bin.jar<br>放在WEB-INF下新建一个lib存放<br>servle 部分如下：<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mypack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Servlet implementation class DatabaseAccess</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/DatabaseAccess"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletForJDBC</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="comment">// JDBC 驱动名及数据库 URL</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String JDBC_DRIVER = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String DB_URL = <span class="string">"jdbc:mysql://localhost:3306/数据库名称"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 数据库的用户名与密码，需要根据自己的设置</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String USER = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String PASS = <span class="string">""</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        Connection conn = <span class="keyword">null</span>;</span><br><span class="line">        Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 设置响应内容类型</span></span><br><span class="line">        response.setContentType(<span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">        PrintWriter out = response.getWriter();</span><br><span class="line">        String title = <span class="string">"Servlet Mysql 测试"</span>;</span><br><span class="line">        String docType = <span class="string">"&lt;!DOCTYPE html&gt;\n"</span>;</span><br><span class="line">        out.println(docType +</span><br><span class="line">                <span class="string">"&lt;html&gt;\n"</span> +</span><br><span class="line">                <span class="string">"&lt;head&gt;&lt;title&gt;"</span> + title + <span class="string">"&lt;/title&gt;&lt;/head&gt;\n"</span> +</span><br><span class="line">                <span class="string">"&lt;body bgcolor=\"#f0f0f0\"&gt;\n"</span> +</span><br><span class="line">                <span class="string">"&lt;h1 align=\"center\"&gt;"</span> + title + <span class="string">"&lt;/h1&gt;\n"</span>);</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">// 注册 JDBC 驱动器</span></span><br><span class="line">            Class.forName(JDBC_DRIVER);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 打开一个连接</span></span><br><span class="line">            conn = DriverManager.getConnection(DB_URL,USER,PASS);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 执行 SQL 查询</span></span><br><span class="line">            stmt = conn.createStatement();</span><br><span class="line">            String sql;</span><br><span class="line">            sql = <span class="string">"查询语句"</span>;</span><br><span class="line">            ResultSet rs = stmt.executeQuery(sql);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 展开结果集数据库</span></span><br><span class="line">            <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">                <span class="comment">// 通过字段检索</span></span><br><span class="line">                <span class="keyword">int</span> id  = rs.getInt(<span class="string">"id"</span>);</span><br><span class="line">                String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">                String age = rs.getString(<span class="string">"age"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 输出数据</span></span><br><span class="line">                out.println(<span class="string">"ID: "</span> + id);</span><br><span class="line">                out.println(<span class="string">", 名称: "</span> + name);</span><br><span class="line">                out.println(<span class="string">", 年龄："</span> + age);</span><br><span class="line">                out.println(<span class="string">"&lt;br /&gt;"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            out.println(<span class="string">"&lt;/body&gt;&lt;/html&gt;"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 完成后关闭</span></span><br><span class="line">            rs.close();</span><br><span class="line">            stmt.close();</span><br><span class="line">            conn.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span>(SQLException se) &#123;</span><br><span class="line">            <span class="comment">// 处理 JDBC 错误</span></span><br><span class="line">            se.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            <span class="comment">// 处理 Class.forName 错误</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="comment">// 最后是用于关闭资源的块</span></span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(stmt!=<span class="keyword">null</span>)</span><br><span class="line">                    stmt.close();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(SQLException se2)&#123;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(conn!=<span class="keyword">null</span>)</span><br><span class="line">                    conn.close();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(SQLException se)&#123;</span><br><span class="line">                se.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就完成了连接jdbc并且查询的功能的servlet部分<br>然后配置好xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;JDBC&lt;/servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;mypack.ServletForJDBC&lt;/servlet-class&gt;</span><br><span class="line">    &lt;/servlet&gt;</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;JDBC&lt;/servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/JDBC&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/selvlet/" rel="tag"><i class="fa fa-tag"></i> selvlet</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Blog建设/" rel="next" title="blog建设">
+                <i class="fa fa-chevron-left"></i> blog建设
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/jdbc插入数据/" rel="prev" title="jdbc插入数据">
+                jdbc插入数据 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Da yun</p>
+              <p class="site-description motion-element" itemprop="description">一只菜鸡的前行之路</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/ECNUDaYun" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本文为菜鸡学习笔记"><span class="nav-number">1.</span> <span class="nav-text">本文为菜鸡学习笔记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Da yun</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '1524400740000',
+            owner: 'ECNUDaYun',
+            repo: 'gitment',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '6f74d55e00a2b7283ee6198314bb71cd2abd6f84',
+            
+                client_id: '83ef681564fda66bc221'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":90,"height":180},"mobile":{"show":true,"scale":0.2},"react":{"opacityDefault":0.9}});</script></body>
+</html>

@@ -1,1 +1,982 @@
-<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0"><link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"6.2.0",sidebar:{position:"right",display:"hide",offset:12,b2t:!1,scrollpercent:!0,onmobile:!1},fancybox:!1,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 写了一会儿之后发现有点长。。。。。 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释"><meta name="keywords" content="Python"><meta property="og:type" content="article"><meta property="og:title" content="凑日更之python语法篇"><meta property="og:url" content="https://ecnudayun.coding.me/凑日更之python语法篇/index.html"><meta property="og:site_name" content="云之学习之路"><meta property="og:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 写了一会儿之后发现有点长。。。。。 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2018-05-05T15:32:20.112Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="凑日更之python语法篇"><meta name="twitter:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 写了一会儿之后发现有点长。。。。。 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释"><link rel="alternate" href="/atom.xml" title="云之学习之路" type="application/atom+xml"><link rel="canonical" href="https://ecnudayun.coding.me/凑日更之python语法篇/"><script type="text/javascript" id="page.configurations">CONFIG.page={sidebar:""}</script><title>凑日更之python语法篇 | 云之学习之路</title><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?11b88116a3b5928e12e29b8a809479de";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><noscript><style type="text/css">.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">云之学习之路</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">追寻着丢失的气球...</p></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://ecnudayun.coding.me/凑日更之python语法篇/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Da yun"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="云之学习之路"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">凑日更之python语法篇</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-05-05 09:35:17 / 修改时间：23:32:20" itemprop="dateCreated datePublished" datetime="2018-05-05T09:35:17+08:00">2018-05-05</time></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <a href="/凑日更之python语法篇/#comments" itemprop="discussionUrl"><span class="post-meta-item-text">评论数：</span><span class="post-comments-count gitment-comments-count" data-xid="/凑日更之python语法篇/" itemprop="commentsCount"></span></a></span></div></header><div class="post-body" itemprop="articleBody"><p>本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写</p><p>适合 <del>所有人</del> 本来就知道这些的人观看</p><p>写了一会儿之后发现有点长。。。。。</p><h4 id="基本规范"><a href="#基本规范" class="headerlink" title="基本规范"></a>基本规范</h4><h5 id="基础编码编码"><a href="#基础编码编码" class="headerlink" title="基础编码编码"></a>基础编码编码</h5><p>默认情况下，Python 3 源码文件以 <strong>UTF-8</strong> 编码</p><h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p><code>#</code>用来注释</p><p>多行的注释可以选择多个<code>#</code>或者</p><p>使用<code>&#39;&#39;&#39;</code>或者<code>&quot;&quot;&quot;</code>来注释</p><a id="more"></a><h5 id="代码基本输入"><a href="#代码基本输入" class="headerlink" title="代码基本输入"></a>代码基本输入</h5><p>一般的教程可能没写</p><p>用手指一个一个按，对的</p><p>python有个很人xing的设计，行末没有<code>;</code></p><p>这个设计很棒可以增大键盘上 向右键 的寿命；</p><p>一行如果想弄多个语句，比如想把10行代码弄到一行，ok，用；分割他们</p><p><strong>空行</strong></p><p>python3语法中对空行没有要求，空行仅仅是对程序员友好的一种工具</p><h5 id="多行语句"><a href="#多行语句" class="headerlink" title="多行语句"></a>多行语句</h5><p>当你输入的时候某些原因你把好好的一句代码弄成多行</p><p>python3的编译器表示不认识</p><p>这个时候使用一手<code>()</code> <code>[]</code> <code>{}</code></p><p>或者用下面这种写法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">total = item_one + \</span><br><span class="line">        item_two + \</span><br><span class="line">        item_three</span><br></pre></td></tr></table></figure><p>多行的字符串用三引号</p><p>看例子</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s=&apos;&apos;&apos;</span><br><span class="line">sada</span><br><span class="line">asdas</span><br><span class="line">asda</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">&gt;&gt;&gt; s</span><br><span class="line">&apos;\nsada\nasdas\nasda\n&apos;</span><br></pre></td></tr></table></figure><h5 id="应用模块"><a href="#应用模块" class="headerlink" title="应用模块"></a>应用模块</h5><p>python中应用的是模块，不是炉石中的那个模块</p><p>模块是.py文件</p><p>多个.py文件构成包</p><p><code>import &lt;包名或者模块名（这个表述不是很准确）&gt;</code>和<code>from &lt;&gt; import &lt;&gt;</code></p><p>&lt;&gt;中写的东西我还不是特别清楚索性不写，基本用法知道会用就行</p><h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><p>python3中很皮</p><h5 id="简单写下整数浮点数问题"><a href="#简单写下整数浮点数问题" class="headerlink" title="简单写下整数浮点数问题"></a>简单写下整数浮点数问题</h5><p>整数与浮点数运算会得到浮点数的结果</p><p>除法（重点）一定得到浮点数 即使结果是真实的计算结果是整数，python3给你的结果也是整数.0</p><p><code>//</code>表示取整除法 两个整数进行这个操作的时候得到的是整数</p><h5 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h5><p><code>and not or</code> 这个不能写成<code>&amp;&amp; ！ ||</code> 这个设定很不舒服</p><p>所以表示一个数a是偶数的装逼写法在python中的书写就感觉很low</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if not a&amp;1:</span><br><span class="line">	...</span><br></pre></td></tr></table></figure><h4 id="迭代器和生成器（先了解下这个再看基本数据结构）"><a href="#迭代器和生成器（先了解下这个再看基本数据结构）" class="headerlink" title="迭代器和生成器（先了解下这个再看基本数据结构）"></a>迭代器和生成器（先了解下这个再看基本数据结构）</h4><h5 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h5><p>我仿佛记得老师说list是迭代器</p><p>但shell告诉我它不是</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list=[1,2,3,4]</span><br><span class="line">&gt;&gt;&gt; next(list)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#26&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    next(list)</span><br><span class="line">TypeError: &apos;list&apos; object is not an iterator</span><br><span class="line">&gt;&gt;&gt; it=iter(list)</span><br><span class="line">&gt;&gt;&gt; next(it)</span><br><span class="line">1</span><br></pre></td></tr></table></figure><p>虽然他不是但使用上有一定的相似处，都可以使用for进行迭代，但实现方式其实不太一样</p><p>迭代器的主要的两个函数就是使用<code>iter()</code> ,<code>next()</code></p><p>iter方法是python的一个内建方法，它会返回一个<strong>迭代器对象</strong></p><h5 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h5><p>这个东东用到的机会有点少，抽象的介绍下</p><p>使用了 yield 的函数被称为生成器（generator），生成器是一个<strong>返回迭代器</strong>的函数，只能用于迭代操作</p><h5 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h5><p><strong>range()函数</strong></p><p>在python2中，这东西返回的还是一个list</p><p>Python3 range() 函数返回的是一个<strong>可迭代对象</strong>（注意和前面iter生成的迭代器对象有区别）</p><p>它也是不能使用next()函数的</p><p>这个时候敏锐的朋友可能猜到，其实字符串，元组，列表，字典也是可迭代对象</p><p>可以实现for遍历的都是可迭代对象</p><p>顺手把for遍历写了，开心</p><p>先来最不同寻常的，字典的遍历</p><p>看下面代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d=&#123;&apos;python&apos;:1,&apos;php&apos;:2,&apos;java&apos;:3&#125;</span><br><span class="line">&gt;&gt;&gt; d.keys()</span><br><span class="line">dict_keys([&apos;python&apos;, &apos;php&apos;, &apos;java&apos;])</span><br><span class="line">&gt;&gt;&gt; d.values()</span><br><span class="line">dict_values([1, 2, 3])</span><br><span class="line">&gt;&gt;&gt; d.items()</span><br><span class="line">dict_items([(&apos;python&apos;, 1), (&apos;php&apos;, 2), (&apos;java&apos;, 3)])</span><br></pre></td></tr></table></figure><p>因为字典中有两个值，一个key值，一个是value值，所以在遍历的时候会有些不太一样的地方，直接遍历得到的是遍历的是key</p><p>自定义的遍历，可以对d.keys()和d.values()和d.items() （这几个返回的都是<strong>可迭代对象</strong>，和list的相似度比较高，但是我试了下，他们不能进行下标访问）进行遍历</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#for key in d.keys():</span><br><span class="line">#for value in d.values():</span><br><span class="line">#for k , v in d.items():</span><br></pre></td></tr></table></figure><p>注：（下面这段不是很必要的操作）</p><p>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。返回一个<strong>枚举对象</strong>而且这个对象是可以迭代的</p><h4 id="几个自带的常用的数据结构"><a href="#几个自带的常用的数据结构" class="headerlink" title="几个自带的常用的数据结构"></a>几个自带的常用的数据结构</h4><p>字符串，元组，列表，字典，集合</p><p>但是我并不想按顺序写，毕竟看这个的人都是本来就会的人/滑稽</p><p>相同点：</p><p>1.他们都是可迭代对象具体见上面一部分</p><p>2.len()这个函数可以返回字符串、列表、字典、元组、集合等的长度</p><p>官方文档令人信服：</p><blockquote><p>Return the length (the number of items) of an object. The argument may be a<br>sequence (such as a string, bytes, tuple, list, or range) or a collection (such<br>as a dictionary, set, or frozen set).</p></blockquote><p>3.list()实测可以对这几种数据结构进行转换</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list(1)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#307&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    list(1)</span><br><span class="line">TypeError: &apos;int&apos; object is not iterable</span><br></pre></td></tr></table></figure><p>我们可以看到只要是可迭代的就可以实现list()函数，实现的效果就是用for遍历出来，然后再打个包价格[]一样</p><p>set() tuple()都是一样的，他们的效果都是差不多的，set操作之后可能顺序不太一样，因为set是无序的</p><p>他们都可以对<strong>可迭代对象</strong>进行操作</p><p>dict()的操作显然就不太一样了，先把官方文档的内容放这里凑字数</p><p>dict() -&gt; new empty dictionary<br> | dict(mapping) -&gt; new dictionary initialized from a mapping object’s<br> | (key, value) pairs<br> | dict(iterable) -&gt; new dictionary initialized as if via:<br> | d = {}<br> | for k, v in iterable:<br> | d[k] = v<br> | dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs<br> | in the keyword argument list. For example: dict(one=1, two=2)</p><p>4.str() 把所有的的都加上“”，与list()不同，它对参数不进行任何处理直接加””，简单粗暴，注意对本来是字符串的它不处理</p><p>repr()更粗暴，连string类的都加引号</p><p>5.tuple()和list()做的是差不多的事</p><p>对字典操作的时返回的是key值</p><p>对字符串返回的是分开的一个个字符串与list的结果相似</p><p>6.<code>+</code> 操作要求相同的数据结构</p><p> <code>+=</code> 居然不一样，还好我试了一下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;abc&quot;</span><br><span class="line">&gt;&gt;&gt; b=(1,2,3)</span><br><span class="line">&gt;&gt;&gt; c=[4,5,6]</span><br><span class="line">&gt;&gt;&gt; d=&#123;1,2,3&#125;</span><br><span class="line">&gt;&gt;&gt; e=&#123;1:&quot;a&quot;,2:&quot;b&quot;&#125;</span><br></pre></td></tr></table></figure><p>经过测试</p><p>任意两个相加是报错的</p><p>但是！！！！(还好<strong>意外只有一个)</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c+=a</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[4, 5, 6, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line">&gt;&gt;&gt; c+=b</span><br><span class="line">&gt;&gt;&gt; c+=d</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[4, 5, 6, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, 1, 2, 3, 1, 2, 3]</span><br><span class="line">&gt;&gt;&gt; c+=e</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[4, 5, 6, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, 1, 2, 3, 1, 2, 3, 1, 2]</span><br></pre></td></tr></table></figure><p>列表实现了自己独特的<u>运算符重载</u> ，在加字典的时候加的是key值</p><p>其实很简单，肉眼能看出来，他们仿佛就是使用了下list()函数之后再相加（当然我是猜的，我没看具体实现方式）</p><p>7.<code>*</code> 相当于自己加起来</p><p>8.min()和max()函数，默认的使用方式就是传进去的参数是可迭代的对象，然后对象里面的对象是可以比较大小的 9. .count()方法，除了集合和字典没有，其他的使用时一样的</p><p>10 . .pop()方法，默认删除最后一个 string没有这个方法， 集合的pop是不确定是去哪个的，字典的话要指定key作为参数</p><p>b.pop(a)有参数a的时候其实相当于删除b[a]</p><hr><p>相同点差不多就这几点吧</p><p>下面的几点相似度稍微低一点</p><h5 id="support-indexing-（就是用中括号来制定索引）"><a href="#support-indexing-（就是用中括号来制定索引）" class="headerlink" title="support indexing （就是用中括号来制定索引）"></a>support indexing （就是用中括号来制定索引）</h5><p>实测结果，字符串，元组，列表， 字典都有</p><p>其中，string，tuple，list的用法都是相同的</p><p>以list的例子来表示</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list=[&quot;abc&quot;,234,&#123;2,3&#125;]</span><br><span class="line">&gt;&gt;&gt; list</span><br><span class="line">[&apos;abc&apos;, 234, &#123;2, 3&#125;]</span><br><span class="line">&gt;&gt;&gt; list[]</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">&gt;&gt;&gt; list[:]</span><br><span class="line">[&apos;abc&apos;, 234, &#123;2, 3&#125;]</span><br><span class="line">&gt;&gt;&gt; list[::2]</span><br><span class="line">[&apos;abc&apos;, &#123;2, 3&#125;]</span><br></pre></td></tr></table></figure><p>字典的话是使用hash的方式来寻值的</p><p>例子</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d</span><br><span class="line">&#123;&apos;python&apos;: 1, &apos;php&apos;: 2, &apos;java&apos;: 3&#125;</span><br><span class="line">&gt;&gt;&gt; d[:]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#109&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    d[:]</span><br><span class="line">TypeError: unhashable type: &apos;slice&apos;</span><br><span class="line">&gt;&gt;&gt; d[1]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#110&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    d[1]</span><br><span class="line">KeyError: 1</span><br><span class="line">&gt;&gt;&gt; d[&quot;python&quot;]</span><br><span class="line">1</span><br></pre></td></tr></table></figure><h5 id="id号"><a href="#id号" class="headerlink" title="id号"></a>id号</h5><p>string和元组内容是不可变的</p><p>他们两个的所有的方法是不改变对象本身的</p><p>在id号这件事上我们区别对待</p><p>取string和list进行对比</p><p>string</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s=&quot;abcd&quot;</span><br><span class="line">&gt;&gt;&gt; s1=s</span><br><span class="line">&gt;&gt;&gt; id(s)==id(s1)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; s+=&quot;d&quot;</span><br><span class="line">&gt;&gt;&gt; id(s)==id(s1)</span><br><span class="line">False</span><br></pre></td></tr></table></figure><p>list</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; id([1,2,3])</span><br><span class="line">58631072</span><br><span class="line">&gt;&gt;&gt; l=[1,2,3]</span><br><span class="line">&gt;&gt;&gt; id(l)</span><br><span class="line">58630992</span><br><span class="line">&gt;&gt;&gt; l1=l</span><br><span class="line">&gt;&gt;&gt; id(l)==id(l1)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; l.append(4)</span><br><span class="line">&gt;&gt;&gt; id(l)</span><br><span class="line">58630992</span><br><span class="line">&gt;&gt;&gt; id(l1)</span><br><span class="line">58630992</span><br><span class="line">&gt;&gt;&gt; l1</span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure><p>具体这是怎么实现的先不管</p><p>我们可以从现象观察到</p><p>1.在最初赋值阶段，变量的id与真正写成“abc”和[1,2,3]的id其实是不同的</p><p>2.但是他们用<code>=</code>进行赋值给其他的变量的时候，其实是把id给人家了，string不可变，所以在改值的时候是用<code>=</code>重新给值了，所以改后的id变了，所以值和原来的不一样；</p><p>list是可变的，对象没变的，操作的是同一个对象，所以id号没变</p><p><strong>另</strong> list，set，dict都有.copy()方法，返回的对象的id号不同，与使用a[:]的效果相同，id号是不一样的</p><h5 id="修改对象"><a href="#修改对象" class="headerlink" title="修改对象"></a>修改对象</h5><p>string和tuple就只能=进行复制来修改了</p><p>后面的增删改就不考虑他们了</p><p><strong>增加</strong>：</p><p><strong>list</strong>通方法<code>append(obj)</code></p><p>注意这个里面是放的object，直接把对象扔到list里面</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c=[1,2]</span><br><span class="line">&gt;&gt;&gt; c.append(range(0,4))</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[1, 2, range(0, 4)]</span><br></pre></td></tr></table></figure><p><strong>set</strong>通过<code>add()</code>方法，加的结果是去重的</p><p>字典的比较不同，看下面的例子</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&apos;c&apos;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br></pre></td></tr></table></figure><p><strong>dict</strong> 可以使用</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e=&#123;1:&quot;a&quot;,2:&quot;b&quot;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&quot;c&quot;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br></pre></td></tr></table></figure><p><strong>删除</strong>：</p><p> .pop()方法，默认删除最后一个 string没有这个方法， 集合的pop是不确定是去哪个的，字典的话要指定key作为参数</p><p>b.pop(a)有参数a的时候其实相当于删除b[a]</p><p>.remove()方法</p><p>必须要有参数，参数为指定对象，没有的话抛出异常</p><p>只有set，list有</p><p>pop和remove的主要差别就是一个是索引号指定，一个是object指定</p><p><strong>del</strong> 这是个很厉害的武器,不仅可以对变量操作</p><p>还</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;abc&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; del e[3]</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br></pre></td></tr></table></figure><p>直接找到索引删掉，和pop貌似差不多</p><p><strong>改：</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 9), &apos;a&apos;, &apos;s&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[2:3]=(1,2,&quot;2&quot;)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 9), &apos;a&apos;, 1, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[2:3]=range(9,11)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 9), &apos;a&apos;, 9, 10, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[0]=range(4)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 4), &apos;a&apos;, 9, 10, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[0:1]=range(3)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[0, 1, 2, &apos;a&apos;, 9, 10, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br></pre></td></tr></table></figure><p>可见，[0]与[0:1]是不一样的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c.clear()</span><br><span class="line">&gt;&gt;&gt; c[0]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#154&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    c[0]</span><br><span class="line">IndexError: list index out of range</span><br><span class="line">&gt;&gt;&gt; c[0:1]=range(3)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[0, 1, 2]</span><br></pre></td></tr></table></figure><p>只有list可以进行上面的这种操作</p><p>字典的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&quot;abc&quot;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;abc&apos;&#125;</span><br></pre></td></tr></table></figure><p>改的话，其实可以通过 删 加完成</p><p><strong>查</strong>：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[2, &apos;bcd&apos;]</span><br><span class="line">&gt;&gt;&gt; c.index(2)</span><br><span class="line">0</span><br></pre></td></tr></table></figure><p>.index()方法</p><p>string，tuple，list有，参数为对象，返回序列号，没有的话会抛出异常</p><p>还有另一种</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[2, &apos;bcd&apos;]</span><br><span class="line">&gt;&gt;&gt; &apos;bcd&apos; in c</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; 1 in e</span><br><span class="line">True</span><br></pre></td></tr></table></figure><p>对字典来说，看的是key在不在</p><p>差不多了，先这样，先想到的主要就是这些，其他的改日再写在下一篇博客里</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/关系模式介绍/" rel="next" title="关系模式介绍"><i class="fa fa-chevron-left"></i> 关系模式介绍</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div><div id="gitment-container" style="display:none"></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><p class="site-author-name" itemprop="name">Da yun</p><p class="site-description motion-element" itemprop="description">一只菜鸡的前行之路</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">11</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">4</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/ECNUDaYun" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本规范"><span class="nav-number">1.</span> <span class="nav-text">基本规范</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础编码编码"><span class="nav-number">1.1.</span> <span class="nav-text">基础编码编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注释"><span class="nav-number">1.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码基本输入"><span class="nav-number">1.3.</span> <span class="nav-text">代码基本输入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多行语句"><span class="nav-number">1.4.</span> <span class="nav-text">多行语句</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用模块"><span class="nav-number">1.5.</span> <span class="nav-text">应用模块</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算"><span class="nav-number">2.</span> <span class="nav-text">运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#简单写下整数浮点数问题"><span class="nav-number">2.1.</span> <span class="nav-text">简单写下整数浮点数问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">2.2.</span> <span class="nav-text">逻辑运算符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器和生成器（先了解下这个再看基本数据结构）"><span class="nav-number">3.</span> <span class="nav-text">迭代器和生成器（先了解下这个再看基本数据结构）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代器"><span class="nav-number">3.1.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#生成器"><span class="nav-number">3.2.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可迭代对象"><span class="nav-number">3.3.</span> <span class="nav-text">可迭代对象</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#几个自带的常用的数据结构"><span class="nav-number">4.</span> <span class="nav-text">几个自带的常用的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#support-indexing-（就是用中括号来制定索引）"><span class="nav-number">4.1.</span> <span class="nav-text">support indexing （就是用中括号来制定索引）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#id号"><span class="nav-number">4.2.</span> <span class="nav-text">id号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改对象"><span class="nav-number">4.3.</span> <span class="nav-text">修改对象</span></a></li></ol></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2018</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Da yun</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script><link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css"><script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script><script type="text/javascript">function renderGitment(){new Gitmint({id:"1525484117000",owner:"ECNUDaYun",repo:"gitment",lang:navigator.language||navigator.systemLanguage||navigator.userLanguage,oauth:{client_secret:"6f74d55e00a2b7283ee6198314bb71cd2abd6f84",client_id:"83ef681564fda66bc221"}}).render("gitment-container")}function showGitment(){document.getElementById("gitment-display-button").style.display="none",document.getElementById("gitment-container").style.display="block",renderGitment()}</script><script type="text/javascript" src="/js/src/clicklove.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",model:{jsonPath:"/live2dw/assets/koharu.model.json"},display:{position:"right",width:90,height:180},mobile:{show:!0,scale:.2},react:{opacityDefault:.9}})</script></body></html>
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.2.0',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 写了一会儿之后发现有点长。。。。。 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="凑日更之python语法篇">
+<meta property="og:url" content="https://ecnudayun.coding.me/凑日更之python语法篇/index.html">
+<meta property="og:site_name" content="云之学习之路">
+<meta property="og:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 写了一会儿之后发现有点长。。。。。 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-05T15:32:20.112Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="凑日更之python语法篇">
+<meta name="twitter:description" content="本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写 适合 所有人 本来就知道这些的人观看 写了一会儿之后发现有点长。。。。。 基本规范基础编码编码默认情况下，Python 3 源码文件以 UTF-8 编码 注释#用来注释 多行的注释可以选择多个#或者 使用&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;来注释">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="云之学习之路" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://ecnudayun.coding.me/凑日更之python语法篇/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>凑日更之python语法篇 | 云之学习之路</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?11b88116a3b5928e12e29b8a809479de";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云之学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">追寻着丢失的气球...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ecnudayun.coding.me/凑日更之python语法篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da yun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云之学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">凑日更之python语法篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-05 09:35:17 / 修改时间：23:32:20" itemprop="dateCreated datePublished" datetime="2018-05-05T09:35:17+08:00">2018-05-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/凑日更之python语法篇/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/凑日更之python语法篇/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文仅作为对某些（主要用来凑更）语法知识的回顾与复习，面向百度书（xia）写</p>
+<p>适合 <del>所有人</del> 本来就知道这些的人观看</p>
+<p>写了一会儿之后发现有点长。。。。。</p>
+<h4 id="基本规范"><a href="#基本规范" class="headerlink" title="基本规范"></a>基本规范</h4><h5 id="基础编码编码"><a href="#基础编码编码" class="headerlink" title="基础编码编码"></a>基础编码编码</h5><p>默认情况下，Python 3 源码文件以 <strong>UTF-8</strong> 编码</p>
+<h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p><code>#</code>用来注释</p>
+<p>多行的注释可以选择多个<code>#</code>或者</p>
+<p>使用<code>&#39;&#39;&#39;</code>或者<code>&quot;&quot;&quot;</code>来注释</p>
+<a id="more"></a>
+<h5 id="代码基本输入"><a href="#代码基本输入" class="headerlink" title="代码基本输入"></a>代码基本输入</h5><p>一般的教程可能没写</p>
+<p>用手指一个一个按，对的</p>
+<p>python有个很人xing的设计，行末没有<code>;</code></p>
+<p>这个设计很棒可以增大键盘上 向右键 的寿命；</p>
+<p>一行如果想弄多个语句，比如想把10行代码弄到一行，ok，用；分割他们</p>
+<p><strong>空行</strong></p>
+<p>python3语法中对空行没有要求，空行仅仅是对程序员友好的一种工具</p>
+<h5 id="多行语句"><a href="#多行语句" class="headerlink" title="多行语句"></a>多行语句</h5><p>当你输入的时候某些原因你把好好的一句代码弄成多行</p>
+<p>python3的编译器表示不认识</p>
+<p>这个时候使用一手<code>()</code> <code>[]</code> <code>{}</code></p>
+<p>或者用下面这种写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">total = item_one + \</span><br><span class="line">        item_two + \</span><br><span class="line">        item_three</span><br></pre></td></tr></table></figure>
+<p>多行的字符串用三引号</p>
+<p>看例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s=&apos;&apos;&apos;</span><br><span class="line">sada</span><br><span class="line">asdas</span><br><span class="line">asda</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">&gt;&gt;&gt; s</span><br><span class="line">&apos;\nsada\nasdas\nasda\n&apos;</span><br></pre></td></tr></table></figure>
+<h5 id="应用模块"><a href="#应用模块" class="headerlink" title="应用模块"></a>应用模块</h5><p>python中应用的是模块，不是炉石中的那个模块</p>
+<p>模块是.py文件</p>
+<p>多个.py文件构成包</p>
+<p><code>import &lt;包名或者模块名（这个表述不是很准确）&gt;</code>和<code>from &lt;&gt; import &lt;&gt;</code></p>
+<p>&lt;&gt;中写的东西我还不是特别清楚索性不写，基本用法知道会用就行</p>
+<h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><p>python3中很皮</p>
+<h5 id="简单写下整数浮点数问题"><a href="#简单写下整数浮点数问题" class="headerlink" title="简单写下整数浮点数问题"></a>简单写下整数浮点数问题</h5><p>整数与浮点数运算会得到浮点数的结果</p>
+<p>除法（重点）一定得到浮点数 即使结果是真实的计算结果是整数，python3给你的结果也是整数.0</p>
+<p><code>//</code>表示取整除法 两个整数进行这个操作的时候得到的是整数</p>
+<h5 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h5><p><code>and not or</code>  这个不能写成<code>&amp;&amp; ！ ||</code>  这个设定很不舒服</p>
+<p>所以表示一个数a是偶数的装逼写法在python中的书写就感觉很low</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if not a&amp;1:</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
+<h4 id="迭代器和生成器（先了解下这个再看基本数据结构）"><a href="#迭代器和生成器（先了解下这个再看基本数据结构）" class="headerlink" title="迭代器和生成器（先了解下这个再看基本数据结构）"></a>迭代器和生成器（先了解下这个再看基本数据结构）</h4><h5 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h5><p>我仿佛记得老师说list是迭代器</p>
+<p>但shell告诉我它不是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list=[1,2,3,4]</span><br><span class="line">&gt;&gt;&gt; next(list)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#26&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    next(list)</span><br><span class="line">TypeError: &apos;list&apos; object is not an iterator</span><br><span class="line">&gt;&gt;&gt; it=iter(list)</span><br><span class="line">&gt;&gt;&gt; next(it)</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>虽然他不是但使用上有一定的相似处，都可以使用for进行迭代，但实现方式其实不太一样</p>
+<p>迭代器的主要的两个函数就是使用<code>iter()</code> ,<code>next()</code></p>
+<p>iter方法是python的一个内建方法，它会返回一个<strong>迭代器对象</strong></p>
+<h5 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h5><p>这个东东用到的机会有点少，抽象的介绍下</p>
+<p>使用了 yield 的函数被称为生成器（generator），生成器是一个<strong>返回迭代器</strong>的函数，只能用于迭代操作</p>
+<h5 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h5><p><strong>range()函数</strong></p>
+<p>在python2中，这东西返回的还是一个list</p>
+<p>Python3 range() 函数返回的是一个<strong>可迭代对象</strong>（注意和前面iter生成的迭代器对象有区别）</p>
+<p>它也是不能使用next()函数的</p>
+<p>这个时候敏锐的朋友可能猜到，其实字符串，元组，列表，字典也是可迭代对象</p>
+<p>可以实现for遍历的都是可迭代对象</p>
+<p>顺手把for遍历写了，开心</p>
+<p>先来最不同寻常的，字典的遍历</p>
+<p>看下面代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d=&#123;&apos;python&apos;:1,&apos;php&apos;:2,&apos;java&apos;:3&#125;</span><br><span class="line">&gt;&gt;&gt; d.keys()</span><br><span class="line">dict_keys([&apos;python&apos;, &apos;php&apos;, &apos;java&apos;])</span><br><span class="line">&gt;&gt;&gt; d.values()</span><br><span class="line">dict_values([1, 2, 3])</span><br><span class="line">&gt;&gt;&gt; d.items()</span><br><span class="line">dict_items([(&apos;python&apos;, 1), (&apos;php&apos;, 2), (&apos;java&apos;, 3)])</span><br></pre></td></tr></table></figure>
+<p>因为字典中有两个值，一个key值，一个是value值，所以在遍历的时候会有些不太一样的地方，直接遍历得到的是遍历的是key</p>
+<p>自定义的遍历，可以对d.keys()和d.values()和d.items() （这几个返回的都是<strong>可迭代对象</strong>，和list的相似度比较高，但是我试了下，他们不能进行下标访问）进行遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#for key in d.keys():</span><br><span class="line">#for value in d.values():</span><br><span class="line">#for k , v in d.items():</span><br></pre></td></tr></table></figure>
+<p>注：（下面这段不是很必要的操作）</p>
+<p>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。返回一个<strong>枚举对象</strong>而且这个对象是可以迭代的</p>
+<h4 id="几个自带的常用的数据结构"><a href="#几个自带的常用的数据结构" class="headerlink" title="几个自带的常用的数据结构"></a>几个自带的常用的数据结构</h4><p>字符串，元组，列表，字典，集合</p>
+<p>但是我并不想按顺序写，毕竟看这个的人都是本来就会的人/滑稽</p>
+<p>相同点：</p>
+<p>1.他们都是可迭代对象具体见上面一部分</p>
+<p>2.len()这个函数可以返回字符串、列表、字典、元组、集合等的长度</p>
+<p>官方文档令人信服：</p>
+<blockquote>
+<p>Return the length (the number of items) of an object. The argument may be a<br>sequence (such as a string, bytes, tuple, list, or range) or a collection (such<br>as a dictionary, set, or frozen set).</p>
+</blockquote>
+<p>3.list()实测可以对这几种数据结构进行转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list(1)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#307&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    list(1)</span><br><span class="line">TypeError: &apos;int&apos; object is not iterable</span><br></pre></td></tr></table></figure>
+<p>我们可以看到只要是可迭代的就可以实现list()函数，实现的效果就是用for遍历出来，然后再打个包价格[]一样</p>
+<p>set() tuple()都是一样的，他们的效果都是差不多的，set操作之后可能顺序不太一样，因为set是无序的</p>
+<p>他们都可以对<strong>可迭代对象</strong>进行操作</p>
+<p>dict()的操作显然就不太一样了，先把官方文档的内容放这里凑字数</p>
+<p>dict() -&gt; new empty dictionary<br> |  dict(mapping) -&gt; new dictionary initialized from a mapping object’s<br> |      (key, value) pairs<br> |  dict(iterable) -&gt; new dictionary initialized as if via:<br> |      d = {}<br> |      for k, v in iterable:<br> |          d[k] = v<br> |  dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs<br> |      in the keyword argument list.  For example:  dict(one=1, two=2)</p>
+<p>4.str() 把所有的的都加上“”，与list()不同，它对参数不进行任何处理直接加””，简单粗暴，注意对本来是字符串的它不处理</p>
+<p>repr()更粗暴，连string类的都加引号</p>
+<p>5.tuple()和list()做的是差不多的事</p>
+<p>对字典操作的时返回的是key值</p>
+<p>对字符串返回的是分开的一个个字符串与list的结果相似</p>
+<p>6.<code>+</code> 操作要求相同的数据结构</p>
+<p> <code>+=</code> 居然不一样，还好我试了一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;abc&quot;</span><br><span class="line">&gt;&gt;&gt; b=(1,2,3)</span><br><span class="line">&gt;&gt;&gt; c=[4,5,6]</span><br><span class="line">&gt;&gt;&gt; d=&#123;1,2,3&#125;</span><br><span class="line">&gt;&gt;&gt; e=&#123;1:&quot;a&quot;,2:&quot;b&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>经过测试</p>
+<p>任意两个相加是报错的</p>
+<p>但是！！！！(还好<strong>意外只有一个)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c+=a</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[4, 5, 6, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line">&gt;&gt;&gt; c+=b</span><br><span class="line">&gt;&gt;&gt; c+=d</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[4, 5, 6, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, 1, 2, 3, 1, 2, 3]</span><br><span class="line">&gt;&gt;&gt; c+=e</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[4, 5, 6, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, 1, 2, 3, 1, 2, 3, 1, 2]</span><br></pre></td></tr></table></figure>
+<p>列表实现了自己独特的<u>运算符重载</u> ，在加字典的时候加的是key值</p>
+<p>其实很简单，肉眼能看出来，他们仿佛就是使用了下list()函数之后再相加（当然我是猜的，我没看具体实现方式）</p>
+<p>7.<code>*</code> 相当于自己加起来</p>
+<p>8.min()和max()函数，默认的使用方式就是传进去的参数是可迭代的对象，然后对象里面的对象是可以比较大小的 9.    .count()方法，除了集合和字典没有，其他的使用时一样的</p>
+<p>10 .      .pop()方法，默认删除最后一个 string没有这个方法， 集合的pop是不确定是去哪个的，字典的话要指定key作为参数</p>
+<p>b.pop(a)有参数a的时候其实相当于删除b[a]</p>
+<hr>
+<p>相同点差不多就这几点吧</p>
+<p>下面的几点相似度稍微低一点</p>
+<h5 id="support-indexing-（就是用中括号来制定索引）"><a href="#support-indexing-（就是用中括号来制定索引）" class="headerlink" title="support indexing （就是用中括号来制定索引）"></a>support indexing （就是用中括号来制定索引）</h5><p>实测结果，字符串，元组，列表， 字典都有</p>
+<p>其中，string，tuple，list的用法都是相同的</p>
+<p>以list的例子来表示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list=[&quot;abc&quot;,234,&#123;2,3&#125;]</span><br><span class="line">&gt;&gt;&gt; list</span><br><span class="line">[&apos;abc&apos;, 234, &#123;2, 3&#125;]</span><br><span class="line">&gt;&gt;&gt; list[]</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">&gt;&gt;&gt; list[:]</span><br><span class="line">[&apos;abc&apos;, 234, &#123;2, 3&#125;]</span><br><span class="line">&gt;&gt;&gt; list[::2]</span><br><span class="line">[&apos;abc&apos;, &#123;2, 3&#125;]</span><br></pre></td></tr></table></figure>
+<p>字典的话是使用hash的方式来寻值的</p>
+<p>例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d</span><br><span class="line">&#123;&apos;python&apos;: 1, &apos;php&apos;: 2, &apos;java&apos;: 3&#125;</span><br><span class="line">&gt;&gt;&gt; d[:]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#109&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    d[:]</span><br><span class="line">TypeError: unhashable type: &apos;slice&apos;</span><br><span class="line">&gt;&gt;&gt; d[1]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#110&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    d[1]</span><br><span class="line">KeyError: 1</span><br><span class="line">&gt;&gt;&gt; d[&quot;python&quot;]</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h5 id="id号"><a href="#id号" class="headerlink" title="id号"></a>id号</h5><p>string和元组内容是不可变的</p>
+<p>他们两个的所有的方法是不改变对象本身的</p>
+<p>在id号这件事上我们区别对待</p>
+<p>取string和list进行对比</p>
+<p>string</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s=&quot;abcd&quot;</span><br><span class="line">&gt;&gt;&gt; s1=s</span><br><span class="line">&gt;&gt;&gt; id(s)==id(s1)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; s+=&quot;d&quot;</span><br><span class="line">&gt;&gt;&gt; id(s)==id(s1)</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+<p>list</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; id([1,2,3])</span><br><span class="line">58631072</span><br><span class="line">&gt;&gt;&gt; l=[1,2,3]</span><br><span class="line">&gt;&gt;&gt; id(l)</span><br><span class="line">58630992</span><br><span class="line">&gt;&gt;&gt; l1=l</span><br><span class="line">&gt;&gt;&gt; id(l)==id(l1)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; l.append(4)</span><br><span class="line">&gt;&gt;&gt; id(l)</span><br><span class="line">58630992</span><br><span class="line">&gt;&gt;&gt; id(l1)</span><br><span class="line">58630992</span><br><span class="line">&gt;&gt;&gt; l1</span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+<p>具体这是怎么实现的先不管</p>
+<p>我们可以从现象观察到</p>
+<p>1.在最初赋值阶段，变量的id与真正写成“abc”和[1,2,3]的id其实是不同的</p>
+<p>2.但是他们用<code>=</code>进行赋值给其他的变量的时候，其实是把id给人家了，string不可变，所以在改值的时候是用<code>=</code>重新给值了，所以改后的id变了，所以值和原来的不一样；</p>
+<p>list是可变的，对象没变的，操作的是同一个对象，所以id号没变</p>
+<p><strong>另</strong>  list，set，dict都有.copy()方法，返回的对象的id号不同，与使用a[:]的效果相同，id号是不一样的</p>
+<h5 id="修改对象"><a href="#修改对象" class="headerlink" title="修改对象"></a>修改对象</h5><p>string和tuple就只能=进行复制来修改了</p>
+<p>后面的增删改就不考虑他们了</p>
+<p><strong>增加</strong>：</p>
+<p><strong>list</strong>通方法<code>append(obj)</code></p>
+<p>注意这个里面是放的object，直接把对象扔到list里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c=[1,2]</span><br><span class="line">&gt;&gt;&gt; c.append(range(0,4))</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[1, 2, range(0, 4)]</span><br></pre></td></tr></table></figure>
+<p><strong>set</strong>通过<code>add()</code>方法，加的结果是去重的</p>
+<p>字典的比较不同，看下面的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&apos;c&apos;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>dict</strong> 可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e=&#123;1:&quot;a&quot;,2:&quot;b&quot;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&quot;c&quot;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>删除</strong>：</p>
+<p> .pop()方法，默认删除最后一个 string没有这个方法， 集合的pop是不确定是去哪个的，字典的话要指定key作为参数</p>
+<p>b.pop(a)有参数a的时候其实相当于删除b[a]</p>
+<p>.remove()方法</p>
+<p>必须要有参数，参数为指定对象，没有的话抛出异常</p>
+<p>只有set，list有</p>
+<p>pop和remove的主要差别就是一个是索引号指定，一个是object指定</p>
+<p><strong>del</strong> 这是个很厉害的武器,不仅可以对变量操作</p>
+<p>还</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;abc&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; del e[3]</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p>直接找到索引删掉，和pop貌似差不多</p>
+<p><strong>改：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 9), &apos;a&apos;, &apos;s&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[2:3]=(1,2,&quot;2&quot;)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 9), &apos;a&apos;, 1, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[2:3]=range(9,11)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 9), &apos;a&apos;, 9, 10, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[0]=range(4)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[range(0, 4), &apos;a&apos;, 9, 10, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br><span class="line">&gt;&gt;&gt; c[0:1]=range(3)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[0, 1, 2, &apos;a&apos;, 9, 10, 2, &apos;2&apos;, &apos;d&apos;, &apos;a&apos;, &apos;s&apos;]</span><br></pre></td></tr></table></figure>
+<p>可见，[0]与[0:1]是不一样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c.clear()</span><br><span class="line">&gt;&gt;&gt; c[0]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#154&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    c[0]</span><br><span class="line">IndexError: list index out of range</span><br><span class="line">&gt;&gt;&gt; c[0:1]=range(3)</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[0, 1, 2]</span><br></pre></td></tr></table></figure>
+<p>只有list可以进行上面的这种操作</p>
+<p>字典的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;c&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; e[3]=&quot;abc&quot;</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;, 3: &apos;abc&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p>改的话，其实可以通过 删 加完成</p>
+<p><strong>查</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[2, &apos;bcd&apos;]</span><br><span class="line">&gt;&gt;&gt; c.index(2)</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p>.index()方法</p>
+<p>string，tuple，list有，参数为对象，返回序列号，没有的话会抛出异常</p>
+<p>还有另一种</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; c</span><br><span class="line">[2, &apos;bcd&apos;]</span><br><span class="line">&gt;&gt;&gt; &apos;bcd&apos; in c</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">&#123;1: &apos;a&apos;, 2: &apos;b&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; 1 in e</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>对字典来说，看的是key在不在</p>
+<p>差不多了，先这样，先想到的主要就是这些，其他的改日再写在下一篇博客里</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/关系模式介绍/" rel="next" title="关系模式介绍">
+                <i class="fa fa-chevron-left"></i> 关系模式介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Da yun</p>
+              <p class="site-description motion-element" itemprop="description">一只菜鸡的前行之路</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/ECNUDaYun" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本规范"><span class="nav-number">1.</span> <span class="nav-text">基本规范</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础编码编码"><span class="nav-number">1.1.</span> <span class="nav-text">基础编码编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注释"><span class="nav-number">1.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码基本输入"><span class="nav-number">1.3.</span> <span class="nav-text">代码基本输入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多行语句"><span class="nav-number">1.4.</span> <span class="nav-text">多行语句</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用模块"><span class="nav-number">1.5.</span> <span class="nav-text">应用模块</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算"><span class="nav-number">2.</span> <span class="nav-text">运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#简单写下整数浮点数问题"><span class="nav-number">2.1.</span> <span class="nav-text">简单写下整数浮点数问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">2.2.</span> <span class="nav-text">逻辑运算符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器和生成器（先了解下这个再看基本数据结构）"><span class="nav-number">3.</span> <span class="nav-text">迭代器和生成器（先了解下这个再看基本数据结构）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代器"><span class="nav-number">3.1.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#生成器"><span class="nav-number">3.2.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可迭代对象"><span class="nav-number">3.3.</span> <span class="nav-text">可迭代对象</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#几个自带的常用的数据结构"><span class="nav-number">4.</span> <span class="nav-text">几个自带的常用的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#support-indexing-（就是用中括号来制定索引）"><span class="nav-number">4.1.</span> <span class="nav-text">support indexing （就是用中括号来制定索引）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#id号"><span class="nav-number">4.2.</span> <span class="nav-text">id号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改对象"><span class="nav-number">4.3.</span> <span class="nav-text">修改对象</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Da yun</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '1525484117000',
+            owner: 'ECNUDaYun',
+            repo: 'gitment',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '6f74d55e00a2b7283ee6198314bb71cd2abd6f84',
+            
+                client_id: '83ef681564fda66bc221'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":90,"height":180},"mobile":{"show":true,"scale":0.2},"react":{"opacityDefault":0.9}});</script></body>
+</html>
