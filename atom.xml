@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ecnudayun.coding.me/"/>
-  <updated>2018-06-13T13:34:34.939Z</updated>
+  <updated>2018-06-14T00:58:09.647Z</updated>
   <id>https://ecnudayun.coding.me/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://ecnudayun.coding.me/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://ecnudayun.coding.me/并行程序（一）/</id>
     <published>2018-06-13T12:36:18.000Z</published>
-    <updated>2018-06-13T13:34:34.939Z</updated>
+    <updated>2018-06-14T00:58:09.647Z</updated>
     
-    <content type="html"><![CDATA[<p>注：很久没更新了，懒了，学不会了</p><h3 id="并行程序第一章"><a href="#并行程序第一章" class="headerlink" title="并行程序第一章"></a>并行程序第一章</h3><h4 id="为甚么要并行"><a href="#为甚么要并行" class="headerlink" title="为甚么要并行"></a>为甚么要并行</h4><p>单核系统的发展受到阻碍，并行大法好</p><h4 id="两种并行方式"><a href="#两种并行方式" class="headerlink" title="两种并行方式"></a>两种并行方式</h4><h5 id="任务并行-数据并行"><a href="#任务并行-数据并行" class="headerlink" title="任务并行 数据并行"></a>任务并行 数据并行</h5><a id="more"></a><p>举个栗子：</p><p>老师和四个助教给100个学生的五道题打分</p><p>第一种方式：每个人负责一个问题打分（任务并行）（<strong>执行不同的指令</strong>）</p><p>第二种方式：把学生分为5组（数据并行）（每个<strong>核</strong>做的都是相同的指令）</p><h4 id="三种协调工作"><a href="#三种协调工作" class="headerlink" title="三种协调工作"></a>三种协调工作</h4><h5 id="通信-负载平衡-同步"><a href="#通信-负载平衡-同步" class="headerlink" title="通信 负载平衡 同步"></a>通信 负载平衡 同步</h5><h4 id="并行化步骤"><a href="#并行化步骤" class="headerlink" title="并行化步骤"></a>并行化步骤</h4><h5 id="划分-通信-聚合-分配（分配到进程中）"><a href="#划分-通信-聚合-分配（分配到进程中）" class="headerlink" title="划分 通信 聚合 分配（分配到进程中）"></a>划分 通信 聚合 分配（分配到进程中）</h5><p>注：老师的英语ppt真心看不懂，从书上大概看点可以写的东西塞上</p><h3 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h3><h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><h5 id="cache映射"><a href="#cache映射" class="headerlink" title="cache映射"></a>cache映射</h5><p><strong>全相联</strong> 每个高速缓存行能放在Cache的任意位置</p><p><strong>直接相联</strong> 每个高速缓存行有特殊的位置</p><p><strong>N路组相联</strong> 每个高速缓存行都可以放置在n个不同区域位置的一个</p>]]></content>
+    <content type="html"><![CDATA[<p>注：很久没更新了，懒了，学不会了</p><h3 id="并行程序第一章"><a href="#并行程序第一章" class="headerlink" title="并行程序第一章"></a>并行程序第一章</h3><h4 id="为甚么要并行"><a href="#为甚么要并行" class="headerlink" title="为甚么要并行"></a>为甚么要并行</h4><p>单核系统的发展受到阻碍，并行大法好</p><h4 id="两种并行方式"><a href="#两种并行方式" class="headerlink" title="两种并行方式"></a>两种并行方式</h4><h5 id="任务并行-数据并行"><a href="#任务并行-数据并行" class="headerlink" title="任务并行 数据并行"></a>任务并行 数据并行</h5><a id="more"></a><p>举个栗子：</p><p>老师和四个助教给100个学生的五道题打分</p><p>第一种方式：每个人负责一个问题打分（任务并行）（<strong>执行不同的指令</strong>）</p><p>第二种方式：把学生分为5组（数据并行）（每个<strong>核</strong>做的都是相同的指令）</p><h4 id="三种协调工作"><a href="#三种协调工作" class="headerlink" title="三种协调工作"></a>三种协调工作</h4><h5 id="通信-负载平衡-同步"><a href="#通信-负载平衡-同步" class="headerlink" title="通信 负载平衡 同步"></a>通信 负载平衡 同步</h5><h4 id="并行化步骤"><a href="#并行化步骤" class="headerlink" title="并行化步骤"></a>并行化步骤</h4><h5 id="划分-通信-聚合-分配（分配到进程中）"><a href="#划分-通信-聚合-分配（分配到进程中）" class="headerlink" title="划分 通信 聚合 分配（分配到进程中）"></a>划分 通信 聚合 分配（分配到进程中）</h5><h3 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h3><h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><h5 id="cache映射"><a href="#cache映射" class="headerlink" title="cache映射"></a>cache映射</h5><p><strong>全相联</strong> 每个高速缓存行能放在Cache的任意位置</p><p><strong>直接相联</strong> 每个高速缓存行有特殊的位置</p><p><strong>N路组相联</strong> 每个高速缓存行都可以放置在n个不同区域位置的一个</p><p>举个栗子：</p><p>16行主存映射到4行cache</p><p>全相联的话，1到16通通可以随机分配到0,1,2,3,</p><p>直接映射：mod 4为多少就放在那个cache</p><p>2路组相联：mod 2为1的放在2或3      mod 2位0的放在0或1</p><p>注意：每次miss读取的会是主存中的一行</p><p><strong>替换方案</strong>通常是最近最少使用</p>]]></content>
     
     <summary type="html">
     
