@@ -1,1 +1,899 @@
-<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0"><link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"6.2.0",sidebar:{position:"right",display:"hide",offset:12,b2t:!1,scrollpercent:!0,onmobile:!1},fancybox:!1,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="`Pthread创建进程123456int pthread_create(	pthread_t thread, 	const pthread_attr_t attr, 	void* (*start_routine)(void*), 	void* arg); 参数分析"><meta name="keywords" content="并行程序"><meta property="og:type" content="article"><meta property="og:title" content="并行程序（三）Pthread"><meta property="og:url" content="https://ecnudayun.coding.me/并行程序（三）Pthread/index.html"><meta property="og:site_name" content="云之学习之路"><meta property="og:description" content="`Pthread创建进程123456int pthread_create(	pthread_t thread, 	const pthread_attr_t attr, 	void* (*start_routine)(void*), 	void* arg); 参数分析"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2018-06-24T07:38:50.900Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="并行程序（三）Pthread"><meta name="twitter:description" content="`Pthread创建进程123456int pthread_create(	pthread_t thread, 	const pthread_attr_t attr, 	void* (*start_routine)(void*), 	void* arg); 参数分析"><link rel="alternate" href="/atom.xml" title="云之学习之路" type="application/atom+xml"><link rel="canonical" href="https://ecnudayun.coding.me/并行程序（三）Pthread/"><script type="text/javascript" id="page.configurations">CONFIG.page={sidebar:""}</script><title>并行程序（三）Pthread | 云之学习之路</title><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?11b88116a3b5928e12e29b8a809479de";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><noscript><style type="text/css">.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">云之学习之路</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">追寻着丢失的气球...</p></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://ecnudayun.coding.me/并行程序（三）Pthread/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Da yun"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="云之学习之路"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">并行程序（三）Pthread</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-06-14 19:01:51" itemprop="dateCreated datePublished" datetime="2018-06-14T19:01:51+08:00">2018-06-14</time> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">更新于</span> <time title="修改时间：2018-06-24 15:38:50" itemprop="dateModified" datetime="2018-06-24T15:38:50+08:00">2018-06-24</time></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <a href="/并行程序（三）Pthread/#comments" itemprop="discussionUrl"><span class="post-meta-item-text">评论数：</span><span class="post-comments-count gitment-comments-count" data-xid="/并行程序（三）Pthread/" itemprop="commentsCount"></span></a></span></div></header><div class="post-body" itemprop="articleBody"><h3 id="Pthread"><a href="#Pthread" class="headerlink" title="`Pthread"></a>`Pthread</h3><h5 id="创建进程"><a href="#创建进程" class="headerlink" title="创建进程"></a>创建进程</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_create</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_t</span> thread, </span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">const</span> <span class="keyword">pthread_attr_t</span> attr, </span></span></span><br><span class="line">	void* (*start_routine)(void*), </span><br><span class="line">	<span class="keyword">void</span>* arg</span><br><span class="line">);</span><br></pre></td></tr></table></figure><p>参数分析</p><a id="more"></a><p>第一个参数是指针对应的是<code>Pthread_t</code>对象<code>Pthread_t</code>对象的空间是在调用函数之前自己要声明的</p><p>第二个参数一般不用，写NULL就可以了</p><p>第三个参数是调用的函数</p><p>第四个也是个指针</p><h5 id="合并进程"><a href="#合并进程" class="headerlink" title="合并进程"></a>合并进程</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_join</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_t</span> thread,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">void</span>** ret_val_p</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span></span><br></pre></td></tr></table></figure><h4 id="避免并行时的一些错误"><a href="#避免并行时的一些错误" class="headerlink" title="避免并行时的一些错误"></a>避免并行时的一些错误</h4><h5 id="忙等待"><a href="#忙等待" class="headerlink" title="忙等待"></a>忙等待</h5><p>未使用忙等待的函数是：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y=compute(my_rank);</span><br><span class="line">x=x+y;</span><br></pre></td></tr></table></figure><p>因为读取x还未写回的时候可能被其他进程写造成其他进程的写最后被覆盖</p><p>使用忙等：（可能会因为编译器的优化导致失效）</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y=compute(my_rank);</span><br><span class="line"><span class="keyword">while</span>(my_rank!=flag);</span><br><span class="line">x=x+y</span><br><span class="line">flag++;</span><br></pre></td></tr></table></figure><p>保证一定的正确性，但是使用忙等待会有效率问题</p><p>操作系统调用各个进程是随机的，所以flag不等于my_rank的概率挺大的，会造成效率比较低</p><h5 id="互斥量"><a href="#互斥量" class="headerlink" title="互斥量"></a>互斥量</h5><p>创建锁(这个函数考试一定不会考，下面几个函数也)</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_init</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_mutex_t</span>* mutex_p,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">const</span> <span class="keyword">pthread_mutexattr_t</span>* attr_p</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;</span><br></pre></td></tr></table></figure><p>加锁</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_lock</span><span class="params">(<span class="keyword">pthread_mutex_t</span>* mutex_p)</span></span>;</span><br></pre></td></tr></table></figure><p>解锁</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_unlock</span><span class="params">(<span class="keyword">pthread_mutex_t</span>* mutex_p)</span></span>;</span><br></pre></td></tr></table></figure><p>del 锁</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_destroy</span><span class="params">(<span class="keyword">pthread_mutex_t</span>* mutex_p)</span></span>;</span><br></pre></td></tr></table></figure><p>互斥锁的性能在进程数多余核数的时候，效率依然很高，忙等就不行了</p><h5 id="信号量-估计也不会考"><a href="#信号量-估计也不会考" class="headerlink" title="信号量(估计也不会考)"></a>信号量(估计也不会考)</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要有头文件</span></span><br><span class="line"><span class="meta">#indlude <span class="meta-string">&lt;semaphore.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_init</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">sem_t</span>* semaphore_p,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">int</span> shared,<span class="comment">//为0就可以了</span></span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">unsigned</span> initial_val</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_destroy</span><span class="params">(<span class="keyword">sem_t</span>* semaphore_p)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_post</span><span class="params">(<span class="keyword">sem_t</span>* semaphore_p)</span></span>;<span class="comment">//加1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_wait</span><span class="params">(<span class="keyword">sem_t</span>* semaphore_p)</span></span>;<span class="comment">//不为0就减1，阻塞到为正数的时候</span></span><br></pre></td></tr></table></figure><h5 id="同步点（路障）"><a href="#同步点（路障）" class="headerlink" title="同步点（路障）"></a>同步点（路障）</h5><p>1）忙等</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(counter&lt;thread_count);</span><br></pre></td></tr></table></figure><p>2)信号量</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Sem_wait(&amp;count_sem);</span><br><span class="line"><span class="keyword">if</span>(counter == thread_count<span class="number">-1</span>)&#123;</span><br><span class="line">    counter = <span class="number">0</span>;</span><br><span class="line">    sem_post(&amp;count_sem);</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;thread_count<span class="number">-1</span>;j++)&#123;</span><br><span class="line">        sem_post(&amp;barrier_sem);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    counter++;</span><br><span class="line">    sem_post(&amp;count_sem);</span><br><span class="line">    sem_wait(&amp;barrier_sem);<span class="comment">//它的作用是从信号量的值减去一个“1”，但它永远会先等待该信号量为一个非零值才开始做减法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>count_sem</code>是用来保护计数的</p><p><code>barrier_sem</code>是路障</p><p>有点难懂，一步一步分析</p><p>第一步，跑的最快的进程来到了第一行，<code>count_sem</code>此时是1（初始值），此时count是0，来到这里的是跑的最快的那个，此时<code>count_sem</code>减1，后面的人就过不了这个锁了，然后进入else语句，counter++，毕竟这第一把锁就为了保护counter++，post把锁打开</p><p>然后第一个进程被锁住了，遇到了路障，此时<code>barrier_sem</code>的值为0，他被拦住了，并且现在还不可以修改信号量</p><p>同样的第二快的进程也将会在这里等着，</p><p>直到最后一个进程，他进入的是if语句 他在解开<code>count_sem</code>之后需要把路障打开，他调用一次post，就有被拦住的的进程可以调用wait来-1并通过路障，总共调用了总数-1次，因为最后这个没有锁这里</p><p>3）条件变量</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_signal</span><span class="params">(<span class="keyword">pthread_cond_t</span>* cond_var_p)</span></span>;<span class="comment">//解锁一个线程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_broadcast</span><span class="params">(<span class="keyword">pthread_cond_t</span>* cond_var_p)</span></span>;<span class="comment">//解锁所有线程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_wait</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_cond_t</span>* cond_var_p;</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_mutex_t</span>* mutex_p</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;<span class="comment">//通过mutex_p来阻塞线程，直到被其他的解锁，当线程解锁后重新获得互斥量</span></span><br></pre></td></tr></table></figure><p>实现路障</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pthread_mutex_lock(&amp;mutex);</span><br><span class="line">counter++;</span><br><span class="line"><span class="keyword">if</span>(counter==thread_count)&#123;</span><br><span class="line">    counter=<span class="number">0</span>;</span><br><span class="line">    pthread_cond_broadcast(&amp;cond_var);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(pthread_cond_wait(&amp;cond_var,&amp;mutex)!=<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">pthread_mutex_unlock(&amp;mutex);</span><br></pre></td></tr></table></figure><p>看看<code>pthread_cond_wait</code>函数的注释大概理解下就行</p><p>只有在被<code>pthread_cond_signal</code> <code>pthread_cond_broadcast</code>解锁的时候<code>pthread_cond_wait</code>返回值会是0</p><h5 id="细粒度锁"><a href="#细粒度锁" class="headerlink" title="细粒度锁"></a>细粒度锁</h5><p>书上提到了在对链表访问的时候可以考虑对每个节点进行加锁增加并行性</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/并行程序/" rel="tag"><i class="fa fa-tag"></i> 并行程序</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/并行程序（二）MPI/" rel="next" title="并行程序（二）MPI"><i class="fa fa-chevron-left"></i> 并行程序（二）MPI</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/并行程序（四）OPENMP/" rel="prev" title="并行程序（四）OPENMP">并行程序（四）OPENMP<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div><div id="gitment-container" style="display:none"></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><p class="site-author-name" itemprop="name">Da yun</p><p class="site-description motion-element" itemprop="description">一只菜鸡的前行之路</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">22</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">10</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/ECNUDaYun" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pthread"><span class="nav-number">1.</span> <span class="nav-text">`Pthread</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建进程"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建进程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合并进程"><span class="nav-number">1.0.2.</span> <span class="nav-text">合并进程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#避免并行时的一些错误"><span class="nav-number">1.1.</span> <span class="nav-text">避免并行时的一些错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#忙等待"><span class="nav-number">1.1.1.</span> <span class="nav-text">忙等待</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#互斥量"><span class="nav-number">1.1.2.</span> <span class="nav-text">互斥量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号量-估计也不会考"><span class="nav-number">1.1.3.</span> <span class="nav-text">信号量(估计也不会考)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同步点（路障）"><span class="nav-number">1.1.4.</span> <span class="nav-text">同步点（路障）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#细粒度锁"><span class="nav-number">1.1.5.</span> <span class="nav-text">细粒度锁</span></a></li></ol></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Da yun</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script><link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css"><script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script><script type="text/javascript">function renderGitment(){new Gitmint({id:"1528974111000",owner:"ECNUDaYun",repo:"gitment",lang:navigator.language||navigator.systemLanguage||navigator.userLanguage,oauth:{client_secret:"6f74d55e00a2b7283ee6198314bb71cd2abd6f84",client_id:"83ef681564fda66bc221"}}).render("gitment-container")}function showGitment(){document.getElementById("gitment-display-button").style.display="none",document.getElementById("gitment-container").style.display="block",renderGitment()}</script><script type="text/javascript" src="/js/src/clicklove.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",model:{jsonPath:"/live2dw/assets/koharu.model.json"},display:{position:"right",width:90,height:180},mobile:{show:!0,scale:.2},react:{opacityDefault:.9}})</script></body></html>
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.2.0',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="`Pthread创建进程123456int pthread_create(	pthread_t thread, 	const pthread_attr_t attr, 	void* (*start_routine)(void*), 	void* arg); 参数分析">
+<meta name="keywords" content="并行程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并行程序（三）Pthread">
+<meta property="og:url" content="https://ecnudayun.coding.me/并行程序（三）Pthread/index.html">
+<meta property="og:site_name" content="云之学习之路">
+<meta property="og:description" content="`Pthread创建进程123456int pthread_create(	pthread_t thread, 	const pthread_attr_t attr, 	void* (*start_routine)(void*), 	void* arg); 参数分析">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-24T07:38:50.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="并行程序（三）Pthread">
+<meta name="twitter:description" content="`Pthread创建进程123456int pthread_create(	pthread_t thread, 	const pthread_attr_t attr, 	void* (*start_routine)(void*), 	void* arg); 参数分析">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="云之学习之路" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://ecnudayun.coding.me/并行程序（三）Pthread/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>并行程序（三）Pthread | 云之学习之路</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?11b88116a3b5928e12e29b8a809479de";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云之学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">追寻着丢失的气球...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ecnudayun.coding.me/并行程序（三）Pthread/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da yun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云之学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">并行程序（三）Pthread
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-14 19:01:51" itemprop="dateCreated datePublished" datetime="2018-06-14T19:01:51+08:00">2018-06-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-24 15:38:50" itemprop="dateModified" datetime="2018-06-24T15:38:50+08:00">2018-06-24</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/并行程序（三）Pthread/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/并行程序（三）Pthread/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Pthread"><a href="#Pthread" class="headerlink" title="`Pthread"></a>`Pthread</h3><h5 id="创建进程"><a href="#创建进程" class="headerlink" title="创建进程"></a>创建进程</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_create</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_t</span> thread, </span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">const</span> <span class="keyword">pthread_attr_t</span> attr, </span></span></span><br><span class="line">	void* (*start_routine)(void*), </span><br><span class="line">	<span class="keyword">void</span>* arg</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>参数分析</p>
+<a id="more"></a>
+<p>第一个参数是指针对应的是<code>Pthread_t</code>对象<code>Pthread_t</code>对象的空间是在调用函数之前自己要声明的</p>
+<p>第二个参数一般不用，写NULL就可以了</p>
+<p>第三个参数是调用的函数</p>
+<p>第四个也是个指针</p>
+<h5 id="合并进程"><a href="#合并进程" class="headerlink" title="合并进程"></a>合并进程</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_join</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_t</span> thread,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">void</span>** ret_val_p</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="避免并行时的一些错误"><a href="#避免并行时的一些错误" class="headerlink" title="避免并行时的一些错误"></a>避免并行时的一些错误</h4><h5 id="忙等待"><a href="#忙等待" class="headerlink" title="忙等待"></a>忙等待</h5><p>未使用忙等待的函数是：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y=compute(my_rank);</span><br><span class="line">x=x+y;</span><br></pre></td></tr></table></figure>
+<p>因为读取x还未写回的时候可能被其他进程写造成其他进程的写最后被覆盖</p>
+<p>使用忙等：（可能会因为编译器的优化导致失效）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y=compute(my_rank);</span><br><span class="line"><span class="keyword">while</span>(my_rank!=flag);</span><br><span class="line">x=x+y</span><br><span class="line">flag++;</span><br></pre></td></tr></table></figure>
+<p>保证一定的正确性，但是使用忙等待会有效率问题</p>
+<p>操作系统调用各个进程是随机的，所以flag不等于my_rank的概率挺大的，会造成效率比较低</p>
+<h5 id="互斥量"><a href="#互斥量" class="headerlink" title="互斥量"></a>互斥量</h5><p>创建锁(这个函数考试一定不会考，下面几个函数也)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_init</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_mutex_t</span>* mutex_p,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">const</span> <span class="keyword">pthread_mutexattr_t</span>* attr_p</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>加锁</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_lock</span><span class="params">(<span class="keyword">pthread_mutex_t</span>* mutex_p)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>解锁</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_unlock</span><span class="params">(<span class="keyword">pthread_mutex_t</span>* mutex_p)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>del 锁</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_destroy</span><span class="params">(<span class="keyword">pthread_mutex_t</span>* mutex_p)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>互斥锁的性能在进程数多余核数的时候，效率依然很高，忙等就不行了</p>
+<h5 id="信号量-估计也不会考"><a href="#信号量-估计也不会考" class="headerlink" title="信号量(估计也不会考)"></a>信号量(估计也不会考)</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要有头文件</span></span><br><span class="line"><span class="meta">#indlude <span class="meta-string">&lt;semaphore.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_init</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">sem_t</span>* semaphore_p,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">int</span> shared,<span class="comment">//为0就可以了</span></span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">unsigned</span> initial_val</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_destroy</span><span class="params">(<span class="keyword">sem_t</span>* semaphore_p)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_post</span><span class="params">(<span class="keyword">sem_t</span>* semaphore_p)</span></span>;<span class="comment">//加1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_wait</span><span class="params">(<span class="keyword">sem_t</span>* semaphore_p)</span></span>;<span class="comment">//不为0就减1，阻塞到为正数的时候</span></span><br></pre></td></tr></table></figure>
+<h5 id="同步点（路障）"><a href="#同步点（路障）" class="headerlink" title="同步点（路障）"></a>同步点（路障）</h5><p>1）忙等</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(counter&lt;thread_count);</span><br></pre></td></tr></table></figure>
+<p>2)信号量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Sem_wait(&amp;count_sem);</span><br><span class="line"><span class="keyword">if</span>(counter == thread_count<span class="number">-1</span>)&#123;</span><br><span class="line">    counter = <span class="number">0</span>;</span><br><span class="line">    sem_post(&amp;count_sem);</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;thread_count<span class="number">-1</span>;j++)&#123;</span><br><span class="line">        sem_post(&amp;barrier_sem);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    counter++;</span><br><span class="line">    sem_post(&amp;count_sem);</span><br><span class="line">    sem_wait(&amp;barrier_sem);<span class="comment">//它的作用是从信号量的值减去一个“1”，但它永远会先等待该信号量为一个非零值才开始做减法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>count_sem</code>是用来保护计数的</p>
+<p><code>barrier_sem</code>是路障</p>
+<p>有点难懂，一步一步分析</p>
+<p>第一步，跑的最快的进程来到了第一行，<code>count_sem</code>此时是1（初始值），此时count是0，来到这里的是跑的最快的那个，此时<code>count_sem</code>减1，后面的人就过不了这个锁了，然后进入else语句，counter++，毕竟这第一把锁就为了保护counter++，post把锁打开</p>
+<p>然后第一个进程被锁住了，遇到了路障，此时<code>barrier_sem</code>的值为0，他被拦住了，并且现在还不可以修改信号量</p>
+<p>同样的第二快的进程也将会在这里等着，</p>
+<p>直到最后一个进程，他进入的是if语句 他在解开<code>count_sem</code>之后需要把路障打开，他调用一次post，就有被拦住的的进程可以调用wait来-1并通过路障，总共调用了总数-1次，因为最后这个没有锁这里</p>
+<p>3）条件变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_signal</span><span class="params">(<span class="keyword">pthread_cond_t</span>* cond_var_p)</span></span>;<span class="comment">//解锁一个线程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_broadcast</span><span class="params">(<span class="keyword">pthread_cond_t</span>* cond_var_p)</span></span>;<span class="comment">//解锁所有线程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_wait</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_cond_t</span>* cond_var_p;</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">pthread_mutex_t</span>* mutex_p</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;<span class="comment">//通过mutex_p来阻塞线程，直到被其他的解锁，当线程解锁后重新获得互斥量</span></span><br></pre></td></tr></table></figure>
+<p>实现路障</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pthread_mutex_lock(&amp;mutex);</span><br><span class="line">counter++;</span><br><span class="line"><span class="keyword">if</span>(counter==thread_count)&#123;</span><br><span class="line">    counter=<span class="number">0</span>;</span><br><span class="line">    pthread_cond_broadcast(&amp;cond_var);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(pthread_cond_wait(&amp;cond_var,&amp;mutex)!=<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">pthread_mutex_unlock(&amp;mutex);</span><br></pre></td></tr></table></figure>
+<p>看看<code>pthread_cond_wait</code>函数的注释大概理解下就行</p>
+<p>只有在被<code>pthread_cond_signal</code> <code>pthread_cond_broadcast</code>解锁的时候<code>pthread_cond_wait</code>返回值会是0</p>
+<h5 id="细粒度锁"><a href="#细粒度锁" class="headerlink" title="细粒度锁"></a>细粒度锁</h5><p>书上提到了在对链表访问的时候可以考虑对每个节点进行加锁增加并行性</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/并行程序/" rel="tag"><i class="fa fa-tag"></i> 并行程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/并行程序（二）MPI/" rel="next" title="并行程序（二）MPI">
+                <i class="fa fa-chevron-left"></i> 并行程序（二）MPI
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/并行程序（四）OPENMP/" rel="prev" title="并行程序（四）OPENMP">
+                并行程序（四）OPENMP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Da yun</p>
+              <p class="site-description motion-element" itemprop="description">一只菜鸡的前行之路</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/ECNUDaYun" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pthread"><span class="nav-number">1.</span> <span class="nav-text">`Pthread</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建进程"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建进程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合并进程"><span class="nav-number">1.0.2.</span> <span class="nav-text">合并进程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#避免并行时的一些错误"><span class="nav-number">1.1.</span> <span class="nav-text">避免并行时的一些错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#忙等待"><span class="nav-number">1.1.1.</span> <span class="nav-text">忙等待</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#互斥量"><span class="nav-number">1.1.2.</span> <span class="nav-text">互斥量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号量-估计也不会考"><span class="nav-number">1.1.3.</span> <span class="nav-text">信号量(估计也不会考)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同步点（路障）"><span class="nav-number">1.1.4.</span> <span class="nav-text">同步点（路障）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#细粒度锁"><span class="nav-number">1.1.5.</span> <span class="nav-text">细粒度锁</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Da yun</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '1528974111000',
+            owner: 'ECNUDaYun',
+            repo: 'gitment',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '6f74d55e00a2b7283ee6198314bb71cd2abd6f84',
+            
+                client_id: '83ef681564fda66bc221'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":90,"height":180},"mobile":{"show":true,"scale":0.2},"react":{"opacityDefault":0.9}});</script></body>
+</html>
